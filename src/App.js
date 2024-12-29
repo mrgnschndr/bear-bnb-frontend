@@ -1,11 +1,16 @@
 import './App.css';
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';  // Import BrowserRouter
+import Nav from './Components/Nav.js';  // Your navigation component
 
 function App() {
   return (
-    <div className="App">
-      <p>Proof Of Life</p>
-    </div>
+    <Router> 
+      <div className="App">
+        <Nav />
+        <p>Proof Of Life</p>
+      </div>
+    </Router>
   );
 }
 
