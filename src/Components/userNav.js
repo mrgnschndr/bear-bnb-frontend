@@ -1,3 +1,7 @@
+// Icon links - https://mui.com/material-ui/material-icons/?query=menu
+// Started with Component from https://mui.com/material-ui/react-menu/#system-BasicMenu.js
+// We may need to update the state on this to use usecontext depending on how user logins are handled // needed - Andy
+
 import React, { useState } from 'react';
 import { Button, Menu, MenuItem } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
