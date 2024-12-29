@@ -1,0 +1,8 @@
+.personal-info {
+    width: 55%;
+    justify-self: center;
+}
+
+.personal-info h1 {
+    justify-self: left;
+}
