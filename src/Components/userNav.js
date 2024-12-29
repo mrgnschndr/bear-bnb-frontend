@@ -24,7 +24,7 @@ export default function UserNav() {
   };
 
   return (
-    <div className="nav-container">
+    <div>
       {/* User menu button styled as a pill */}
       <Button
         className="pill-button"
