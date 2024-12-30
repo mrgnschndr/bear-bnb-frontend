@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import "./personal-info.css";
+import React, { useState } from 'react';
+import './personal-info.css';
 
 //Legal Name
-import LegalName from "./legalName";
-import LegalNameEdit from "./legalNameEdit";
+import LegalName from "../Components/legalName";
+import LegalNameEdit from "../Components/legalNameEdit";
 
 //Preferred Name
-import PreferredName from "./preferredName";
-import PreferredNameEdit from "./preferredNameEdit";
+import PreferredName from "../Components/preferredName";
+import PreferredNameEdit from "../Components/preferredNameEdit";
 
 //Phone Number
-import PhoneNumber from "./PhoneNumber";
-import PhoneNumberEdit from "./PhoneNumberEdit";
+import PhoneNumber from "../Components/PhoneNumber";
+import PhoneNumberEdit from "../Components/PhoneNumberEdit";
 
 /**
  * PersonalInfo Component
