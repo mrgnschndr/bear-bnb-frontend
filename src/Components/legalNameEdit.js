@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 
-export default function LegalNameEdit() {
+export default function LegalNameEdit({ toggleEditMenu }) {
     return (
         <div className="info-section">
             <div className='left-aligned'> 
@@ -30,7 +30,7 @@ export default function LegalNameEdit() {
                 </Box>
                 <button className='save-btn'>Save and continue</button>
             </div>
-            <button>Cancel</button>
+            <button onClick={toggleEditMenu}>Cancel</button>
         </div>
 
     )
