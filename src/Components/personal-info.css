@@ -3,7 +3,7 @@
     justify-self: center;
 }
 
-.personal-info h1 {
+.personal-info h1, h3 {
     justify-self: left;
 }
 
@@ -16,6 +16,7 @@
 
 .info-section p {
     color: rgb(72, 72, 72);
+    justify-self: left;
 }
 
 .info-section button {
@@ -24,4 +25,22 @@
     text-decoration: underline;
     font-weight: bold;
     cursor: pointer;
+}
+
+.left-aligned {
+    justify-items: left;
+}
+
+.text-fields {
+    display: flex;
+}
+
+button.save-btn {
+    font-size: 1rem;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    border-radius: 8px;
+    margin: 20px 0 25px 0;
 }
