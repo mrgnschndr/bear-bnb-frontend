@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './personal-info.css';
-import LegalName from './legalName';
-import LegalNameEdit from './legalNameEdit';
-import PreferredName from './preferredName';
-import PreferredNameEdit from './preferredNameEdit';
+import LegalName from '../Components/legalName';
+import LegalNameEdit from '../Components/legalNameEdit';
+import PreferredName from '../Components/preferredName';
+import PreferredNameEdit from '../Components/preferredNameEdit';
 
 export default function PersonalInfo() {
     const [editLegalNameOpen, setEditLegalName] = useState(false);
