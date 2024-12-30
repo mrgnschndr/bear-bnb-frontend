@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './personal-info.css';
+import Nav from '../Components/Nav';
 
 //Legal Name
 import LegalName from "../Components/legalName";
@@ -15,6 +16,7 @@ import PhoneNumberEdit from "../Components/PhoneNumberEdit";
 
 /**
  * PersonalInfo Component
+ * Page which houses nav bar and all personal information components
  * Parent component that manages all personal information sections
  * Handles state management for edit modes and stored values
  * Controls which version of each section (view/edit) is displayed
@@ -61,44 +63,48 @@ export default function PersonalInfo() {
 
   return (
     // Main container with styles from personal-info.css
-    <div className="personal-info">
-      <h1>Personal Info</h1>
+    <>
+        <Nav />
+        <div className="personal-info">
+        <h1>Personal Info</h1>
 
-      {/* Legal Name Section */}
-      {/* Ternary operator determines which version to show */}
-      {!editStates.legalName ? (
-        // View mode - show LegalName component
-        <LegalName
-          toggleEditMenu={() => toggleEditMenu("legalName")} // Pass toggle function
-        />
-      ) : (
-        // Edit mode - show LegalNameEdit component
-        <LegalNameEdit
-          toggleEditMenu={() => toggleEditMenu("legalName")} // Pass toggle function
-        />
-      )}
+        {/* Legal Name Section */}
+        {/* Ternary operator determines which version to show */}
+        {!editStates.legalName ? (
+            // View mode - show LegalName component
+            <LegalName
+            toggleEditMenu={() => toggleEditMenu("legalName")} // Pass toggle function
+            />
+        ) : (
+            // Edit mode - show LegalNameEdit component
+            <LegalNameEdit
+            toggleEditMenu={() => toggleEditMenu("legalName")} // Pass toggle function
+            />
+        )}
 
-      {/* Preferred Name Section */}
-      {/* Currently not connected to edit states - might need to be updated */}
-      <PreferredName />
-      <PreferredNameEdit />
+        {/* Preferred Name Section */}
+        {/* Currently not connected to edit states - might need to be updated */}
+        <PreferredName />
+        <PreferredNameEdit />
 
-      {/* Phone Number Section */}
-      {/* Ternary operator determines which version to show */}
-      {!editStates.phoneNumber ? (
-        // View mode - show PhoneNumber component
-        <PhoneNumber
-          phoneNumber={phoneNumber} // Pass current phone number for display
-          toggleEditMenu={() => toggleEditMenu("phoneNumber")} // Pass toggle function
-        />
-      ) : (
-        // Edit mode - show PhoneNumberEdit component
-        <PhoneNumberEdit
-          initialPhoneNumber={phoneNumber} // Pass current number as starting value
-          onSave={setPhoneNumber} // Pass function to update phone number
-          toggleEditMenu={() => toggleEditMenu("phoneNumber")} // Pass toggle function
-        />
-      )}
-    </div>
+        {/* Phone Number Section */}
+        {/* Ternary operator determines which version to show */}
+        {!editStates.phoneNumber ? (
+            // View mode - show PhoneNumber component
+            <PhoneNumber
+            phoneNumber={phoneNumber} // Pass current phone number for display
+            toggleEditMenu={() => toggleEditMenu("phoneNumber")} // Pass toggle function
+            />
+        ) : (
+            // Edit mode - show PhoneNumberEdit component
+            <PhoneNumberEdit
+            initialPhoneNumber={phoneNumber} // Pass current number as starting value
+            onSave={setPhoneNumber} // Pass function to update phone number
+            toggleEditMenu={() => toggleEditMenu("phoneNumber")} // Pass toggle function
+            />
+        )}
+        </div>
+
+    </>
   );
 }
