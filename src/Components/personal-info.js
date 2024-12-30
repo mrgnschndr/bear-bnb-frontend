@@ -4,6 +4,8 @@ import LegalName from './legalName';
 import LegalNameEdit from './legalNameEdit';
 import PreferredName from './preferredName';
 import PreferredNameEdit from './preferredNameEdit';
+import PhoneNumber from './PhoneNumber';
+import PhoneNumberEdit from './PhoneNumberEdit';
 
 export default function PersonalInfo() {
     const [editLegalNameOpen, setEditLegalName] = useState(false);
@@ -19,6 +21,8 @@ export default function PersonalInfo() {
             {editLegalNameOpen && <LegalNameEdit toggleEditMenu={toggleEditMenu}/> }
             <PreferredName />
             <PreferredNameEdit />
+            {!editLegalNameOpen && <PhoneNumber toggleEditMenu={toggleEditMenu}/> }
+            {editLegalNameOpen && <PhoneNumberEdit toggleEditMenu={toggleEditMenu}/> }
         </div>
     );
 }
