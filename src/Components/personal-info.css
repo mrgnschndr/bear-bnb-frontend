@@ -14,9 +14,15 @@
     border-bottom: 1px solid rgba(128, 128, 128, 0.22);
 }
 
+.info-section h3 {
+    margin-bottom: 0px;
+}
+
 .info-section p {
-    color: rgb(72, 72, 72);
+    color: #6A6A6A;
     justify-self: left;
+    margin-top: 0px;
+    margin-bottom: 30px;
 }
 
 .info-section button {
@@ -26,7 +32,37 @@
     font-weight: bold;
     cursor: pointer;
 }
+.info-section-edit {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.22);
+}
 
+.cancel-btn {
+    background: none;
+    border: none;
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+    height: 17px;
+}
+.info-section-edit h3 {
+    margin-bottom: 0px;
+}
+.info-section-edit p {
+    color: #6A6A6A;
+    text-align: left;
+    margin-top: 0px;
+    margin-bottom: 30px;
+}
+.info-section-edit a {
+    font-weight: bold;
+    color:#6A6A6A;
+}
+.preferred-edit .save-btn {
+    align-content: left;
+}
 .left-aligned {
     justify-items: left;
 }
@@ -42,5 +78,7 @@ button.save-btn {
     color: white;
     background-color: black;
     border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
     margin: 20px 0 25px 0;
 }
