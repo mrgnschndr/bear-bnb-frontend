@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, TextField } from '@mui/material';
 
 
-export default function PreferredNameEdit() {
+export default function PreferredNameEdit({ toggleEditMenu }) {
     return (
         <div className="info-section-edit">
             <div className="preferred-edit">
@@ -18,7 +18,7 @@ export default function PreferredNameEdit() {
                     />
                 <button type="submit" className="save-btn">Save</button>
             </div>
-            <button className="cancel-btn">Cancel</button>
+            <button className="cancel-btn" onClick={toggleEditMenu}>Cancel</button>
         </div>
     )
 }
