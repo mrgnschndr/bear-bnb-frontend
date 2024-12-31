@@ -31,6 +31,7 @@ export default function PersonalInfo() {
   const [editStates, setEditStates] = useState({
     legalName: false, // Initially in view mode
     phoneNumber: false, // Initially in view mode
+    preferredName: false, // Initially in view mode
   });
 
   /**
@@ -80,9 +81,18 @@ export default function PersonalInfo() {
 
       {/* Preferred Name Section */}
       {/* Currently not connected to edit states - might need to be updated */}
-      <PreferredName />
-      <PreferredNameEdit />
+      {!editStates.preferredName ? (
 
+      // View mode - show LegalName component
+      <PreferredName 
+        toggleEditMenu={() => toggleEditMenu("preferredName")} //Pass toggle function
+      />
+      ) : (
+        // Edit mode - show LegalNameEdit component
+      <PreferredNameEdit 
+        toggleEditMenu={() => toggleEditMenu("preferredName")} //Pass toggle function
+      />
+      )}
       {/* Phone Number Section */}
       {/* Ternary operator determines which version to show */}
       {!editStates.phoneNumber ? (
