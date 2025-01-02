@@ -13,6 +13,10 @@ import PreferredNameEdit from "../Components/preferredNameEdit";
 import PhoneNumber from "../Components/PhoneNumber";
 import PhoneNumberEdit from "../Components/PhoneNumberEdit";
 
+//Email Address
+import EmailAddress from '../Components/emailAddress';
+import EmailAddressEdit from '../Components/emailAddressEdit';
+
 /**
  * PersonalInfo Component
  * Parent component that manages all personal information sections
@@ -32,6 +36,7 @@ export default function PersonalInfo() {
     legalName: false, // Initially in view mode
     phoneNumber: false, // Initially in view mode
     preferredName: false, // Initially in view mode
+    emailAddress: false,
   });
 
   /**
@@ -107,6 +112,19 @@ export default function PersonalInfo() {
           initialPhoneNumber={phoneNumber} // Pass current number as starting value
           onSave={setPhoneNumber} // Pass function to update phone number
           toggleEditMenu={() => toggleEditMenu("phoneNumber")} // Pass toggle function
+        />
+      )}
+      {/* Email Address Section*/}
+      {/* Ternary operator determines which version to show */}
+      {!editStates.emailAddress ? (
+        // View mode - show PhoneNumber component
+        <EmailAddress
+          toggleEditMenu={() => toggleEditMenu("emailAddress")} // Pass toggle function
+        />
+      ) : (
+        // Edit mode - show Email Address component
+        <EmailAddressEdit
+          toggleEditMenu={() => toggleEditMenu("emailAddress")} // Pass toggle function
         />
       )}
     </div>
