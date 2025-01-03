@@ -71,6 +71,11 @@
     display: flex;
 }
 
+.text-fields.vertical {
+    display: flex;
+    flex-direction: column;
+}
+
 button.save-btn {
     font-size: 1rem;
     padding: 15px 20px;
