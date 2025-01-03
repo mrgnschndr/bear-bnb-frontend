@@ -90,8 +90,14 @@ width: 100%;
     display: flex;
 }
 
+
 .MuiMenuItem-root {
  width: 300px;
+}
+
+.text-fields.vertical {
+    display: flex;
+    flex-direction: column;
 }
 
 button.save-btn {
