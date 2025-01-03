@@ -60,6 +60,25 @@
     font-weight: bold;
     color:#6A6A6A;
 }
+.address-edit {
+    display: flex;
+}
+.city-state {
+    display: grid;
+    grid-template-columns: 49% 49%;
+    width: 100%;
+    gap: 10px;
+}
+.form-control{
+width: 100%;
+}
+.country-box {
+width: 100%;
+}
+.address-fields {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 .preferred-edit .save-btn {
     align-content: left;
 }
@@ -69,6 +88,11 @@
 
 .text-fields {
     display: flex;
+}
+
+
+.MuiMenuItem-root {
+ width: 300px;
 }
 
 .text-fields.vertical {
@@ -86,4 +110,10 @@ button.save-btn {
     font-weight: bold;
     cursor: pointer;
     margin: 20px 0 25px 0;
+}
+
+@media all and (max-width: 740px) {
+    .city-state {
+        display: block;
+    }
 }

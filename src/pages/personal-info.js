@@ -17,9 +17,14 @@ import PhoneNumberEdit from "../Components/PhoneNumberEdit";
 import EmailAddress from '../Components/emailAddress';
 import EmailAddressEdit from '../Components/emailAddressEdit';
 
+//Address
+import Address from '../Components/address';
+import AddressEdit from '../Components/addressEdit';
+
 //Emergency Contact
 import EmergencyContact from '../Components/emergencyContact';
 import EmergencyContactEdit from '../Components/emergencyContactEdit';
+
 
 /**
  * PersonalInfo Component
@@ -42,6 +47,7 @@ export default function PersonalInfo() {
     preferredName: false, // Initially in view mode
     emailAddress: false, // Initially in view mode
     emergencyContact: false, //Initially in view mode
+    address: false, // Initially in view mode
   });
 
   /**
@@ -132,6 +138,18 @@ export default function PersonalInfo() {
           toggleEditMenu={() => toggleEditMenu("emailAddress")} // Pass toggle function
         />
       )}
+      {/* Address Section*/}
+      {/* Ternary operator determines which version to show */}
+      {!editStates.address ? (
+        <Address
+        toggleEditMenu={() => toggleEditMenu
+          ("address")}
+        />
+      ) : (
+        <AddressEdit
+        toggleEditMenu={() => toggleEditMenu
+          ("address")}
+
       {/* Emergency Contact Section*/}
       {/* Ternary operator determines which version to show */}
       {!editStates.emergencyContact ? (
@@ -143,6 +161,7 @@ export default function PersonalInfo() {
         // Edit mode - show Email Address component
         <EmergencyContactEdit
           toggleEditMenu={() => toggleEditMenu("emergencyContact")} // Pass toggle function
+
         />
       )}
     </div>
