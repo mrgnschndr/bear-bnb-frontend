@@ -25,6 +25,9 @@ import AddressEdit from '../Components/addressEdit';
 import EmergencyContact from '../Components/emergencyContact';
 import EmergencyContactEdit from '../Components/emergencyContactEdit';
 
+//Footer
+import FooterAccount from '../Components/FooterAccount';
+
 
 /**
  * PersonalInfo Component
@@ -164,6 +167,7 @@ export default function PersonalInfo() {
 
         />
       )}
+      <FooterAccount />
     </div>
   );
 }

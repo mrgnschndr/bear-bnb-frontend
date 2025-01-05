@@ -112,6 +112,20 @@ button.save-btn {
     margin: 20px 0 25px 0;
 }
 
+.footer {
+    background-color: #F7F7F7;
+}
+
+.footer-list {
+    color: rgb(34, 34, 34);
+    list-style-type: none;
+}
+
+.footer-menu {
+    font-size: 0.75rem;
+}
+
+
 @media all and (max-width: 740px) {
     .city-state {
         display: block;
