@@ -22,18 +22,21 @@ export default function FooterAccount() {
         justifyContent: "center",
         alignItems: "center",
          }}>
-      <Grid container spacing={8} columns={3}>
+      <Grid container spacing={2} columns={3} sx={{
+        width: '60%',
+        margin: 'auto',
+         }}>
         <Grid size={1}>
             <Item class="footer-menu">
                 <ul class="footer-list">
                     <li>Support</li>
-                    <li>Help Center</li>
-                    <li>Get help with a safety issue</li>
-                    <li>BearCover</li>
-                    <li>Anti-discrimination</li>
-                    <li>Disability support</li>
-                    <li>Cancellation options</li>
-                    <li>Report neighborhood concern</li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Get help with a safety issue</a></li>
+                    <li><a href="#">BearCover</a></li>
+                    <li><a href="#">Anti-discrimination</a></li>
+                    <li><a href="#">Disability support</a></li>
+                    <li><a href="#">Cancellation options</a></li>
+                    <li><a href="#">Report neighborhood concern</a></li>
                 </ul>
             </Item>
         </Grid>
@@ -41,14 +44,14 @@ export default function FooterAccount() {
             <Item class="footer-menu">
                 <ul class="footer-list">
                     <li>Hosting</li>
-                    <li>Bearbnb your home</li>
-                    <li>BearCover for Hosts</li>
-                    <li>Hosting resources</li>
-                    <li>Community forum</li>
-                    <li>Hosting responsibly</li>
-                    <li>Bearbnb-friendly apartments</li>
-                    <li>Join a free Hosting class</li>
-                    <li>Find a co-host</li>
+                    <li><a href="#">Bearbnb your home</a></li>
+                    <li><a href="#">BearCover for Hosts</a></li>
+                    <li><a href="#">Hosting resources</a></li>
+                    <li><a href="#">Community forum</a></li>
+                    <li><a href="#">Hosting responsibly</a></li>
+                    <li><a href="#">Bearbnb-friendly apartments</a></li>
+                    <li><a href="#">Join a free Hosting class</a></li>
+                    <li><a href="#">Find a co-host</a></li>
                 </ul>
             </Item>
         </Grid>
@@ -56,12 +59,12 @@ export default function FooterAccount() {
             <Item class="footer-menu">
             <ul class="footer-list">
                 <li>Bearbnb</li>
-                <li>Newsroom</li>
-                <li>New features</li>
-                <li>Careers</li>
-                <li>Investors</li>
-                <li>Gift cards</li>
-                <li>Bearbnb.org emergency stays</li>
+                <li><a href="#">Newsroom</a></li>
+                <li><a href="#">New features</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Investors</a></li>
+                <li><a href="#">Gift cards</a></li>
+                <li><a href="#">Bearbnb.org emergency stays</a></li>
             </ul>
             </Item>
         </Grid>

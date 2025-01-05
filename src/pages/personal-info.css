@@ -114,6 +114,15 @@ button.save-btn {
 
 .footer {
     background-color: #F7F7F7;
+    padding: 1vw;
+    margin-top: 1vw;
+    border-top-color: rgb(221, 221, 221);
+    border-top-style: solid;
+    border-top-width: 0.666667px;
+}
+
+.footer-menu {
+    font-size: 0.8rem;
 }
 
 .footer-list {
@@ -121,9 +130,23 @@ button.save-btn {
     list-style-type: none;
 }
 
-.footer-menu {
-    font-size: 0.75rem;
+.footer-list a {
+    text-decoration: none;
+    color: rgb(34, 34, 34);
 }
+
+.footer-list a:hover {
+    text-decoration: underline;
+}
+
+.footer-list li:first-child {
+    font-weight: 500;
+}
+
+.footer-list li {
+    margin-bottom: 0.5rem;
+}
+
 
 
 @media all and (max-width: 740px) {
