@@ -1,4 +1,5 @@
 import React from "react";
+import { useLoggedInUser } from "../hooks/useLoggedInUser";
 
 /**
  * Display component for the user's phone number
@@ -8,11 +9,20 @@ import React from "react";
  * function -> toggleEditMenu - Function to switch to edit mode
  */
 export default function PhoneNumber({ phoneNumber, toggleEditMenu }) {
+
+  // Call the custom hook and destructure the values
+  const { loggedInUser } = useLoggedInUser();
+
   return (
     <div className="info-section">
       <div>
         <h3>Phone Number</h3>
-        <p>{phoneNumber || "Not Provided"}</p>
+        <p>
+          {/* Conditionally render the user's full name or a fallback */}
+          {loggedInUser
+            ? `${loggedInUser.user_phone}`
+            : "Not Provided"}
+        </p>
       </div>
       <button onClick={toggleEditMenu}>Edit</button>
     </div>
