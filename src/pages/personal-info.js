@@ -149,7 +149,7 @@ export default function PersonalInfo() {
         <AddressEdit
         toggleEditMenu={() => toggleEditMenu
           ("address")}
-
+      /> )}
       {/* Emergency Contact Section*/}
       {/* Ternary operator determines which version to show */}
       {!editStates.emergencyContact ? (
