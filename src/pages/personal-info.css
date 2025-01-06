@@ -115,7 +115,7 @@ button.save-btn {
 .footer {
     background-color: #F7F7F7;
     padding: 1vw;
-    margin-top: 1vw;
+    margin-top: 2vw;
     border-top-color: rgb(221, 221, 221);
     border-top-style: solid;
     border-top-width: 0.666667px;
@@ -123,6 +123,7 @@ button.save-btn {
 
 .footer-menu {
     font-size: 0.8rem;
+    margin-bottom: 2vw;
 }
 
 .footer-list {
@@ -147,10 +148,26 @@ button.save-btn {
     margin-bottom: 0.5rem;
 }
 
+.footer-small {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    width: 80vw;
+    font-size: 12px;
+}
+
 .footer-info {
     font-size: 12px;
     margin-left: 20vw;
+    align-self: center;
 }
+
+.footer-extra {
+    font-size: 12px;
+    align-content: center;
+    margin: 0 2vw 0 2vw;
+}
+
 
 
 

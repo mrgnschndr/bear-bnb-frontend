@@ -5,6 +5,12 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 
+import LanguageIcon from '@mui/icons-material/Language';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import InstagramIcon from '@mui/icons-material/Instagram';
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: '#fff',
   ...theme.typography.body2,
@@ -71,7 +77,18 @@ export default function FooterAccount() {
         </Grid>
       </Grid>
       <Divider />
-      <p class="footer-info">© 2025 Airbnb, Inc.  ·  Terms ·  Sitemap  ·  Privacy  ·  Your Privacy Choices</p>
+      <div class="footer-small">
+        <p class="footer-info">© 2025 Airbnb, Inc.  ·  Terms ·  Sitemap  ·  Privacy  ·  Your Privacy Choices</p>
+        <p class="footer-extra">
+            <LanguageIcon fontSize="small"/> 
+            English (US)
+            <AttachMoneyIcon fontSize="small"/>
+            USD
+            <FacebookIcon fontSize="small"/>
+            <TwitterIcon fontSize="small"/>
+            <InstagramIcon fontSize="small"/>
+        </p>
+      </div>
     </Box>
   );
 }
