@@ -147,6 +147,11 @@ button.save-btn {
     margin-bottom: 0.5rem;
 }
 
+.footer-info {
+    font-size: 12px;
+    margin-left: 20vw;
+}
+
 
 
 @media all and (max-width: 740px) {

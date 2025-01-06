@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid2';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: '#fff',
@@ -69,6 +70,8 @@ export default function FooterAccount() {
             </Item>
         </Grid>
       </Grid>
+      <Divider />
+      <p class="footer-info">© 2025 Airbnb, Inc.  ·  Terms ·  Sitemap  ·  Privacy  ·  Your Privacy Choices</p>
     </Box>
   );
 }
