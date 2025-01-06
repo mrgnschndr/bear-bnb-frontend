@@ -20,6 +20,9 @@ export function UserProvider({ children }) {
       if (response.data.success) {
         console.log("All users from database:", response.data.data);
         setUsers(response.data.data); // Update the users state with fetched data
+        if (response.data.data.length > 0) {
+          setLoggedInUser(response.data.data[0]);
+        }
       } else {
         console.error(response.data.message); // Log the error message if fetching fails
       }
