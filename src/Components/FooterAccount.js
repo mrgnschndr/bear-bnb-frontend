@@ -10,6 +10,7 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import EditAttributesIcon from '@mui/icons-material/EditAttributes';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: '#fff',
@@ -78,15 +79,39 @@ export default function FooterAccount() {
       </Grid>
       <Divider />
       <div class="footer-small">
-        <p class="footer-info">© 2025 Airbnb, Inc.  ·  Terms ·  Sitemap  ·  Privacy  ·  Your Privacy Choices</p>
+        <div class="footer-info">
+          <p>© 2025 Airbnb, Inc.  ·  Terms ·  Sitemap  ·  Privacy  ·  Your Privacy Choices</p>
+          <EditAttributesIcon fontSize="small" sx={{
+            fill: "rgb(0, 102, 255)", 
+            alignSelf: "center",
+            marginLeft: "4px",
+          }}/>
+        </div>
         <p class="footer-extra">
-            <LanguageIcon fontSize="small"/> 
-            English (US)
-            <AttachMoneyIcon fontSize="small"/>
-            USD
-            <FacebookIcon fontSize="small"/>
-            <TwitterIcon fontSize="small"/>
-            <InstagramIcon fontSize="small"/>
+            <LanguageIcon fontSize="small" sx={{
+              alignSelf: "center",
+              marginLeft: "12px",
+              marginRight: "0",
+            }}/> 
+            <p>English (US)</p>
+            <AttachMoneyIcon fontSize="small" sx={{
+              alignSelf: "center",
+              marginLeft: "12px",
+              marginRight: "0",
+            }}/>
+            <p>USD</p>
+            <FacebookIcon fontSize="small" sx={{
+              alignSelf: "center",
+              margin: "0 8px 0 12px"
+            }}/>
+            <TwitterIcon fontSize="small" sx={{
+              alignSelf: "center",
+              margin: "0 8px"
+            }}/>
+            <InstagramIcon fontSize="small" sx={{
+              alignSelf: "center",
+              margin: "0 8px"
+            }}/>
         </p>
       </div>
     </Box>
