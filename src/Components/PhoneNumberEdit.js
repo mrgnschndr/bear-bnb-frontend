@@ -7,6 +7,8 @@ import Box from "@mui/material/Box";
 // Import Axios
 import axios from "axios";
 
+import { useLoggedInUser } from "../hooks/useLoggedInUser";
+
 /**
  * PhoneNumberEdit Component
  * This component handles editing and validating a phone number
@@ -22,6 +24,11 @@ export default function PhoneNumberEdit({
   toggleEditMenu,
   userId,
 }) {
+
+  // Call the custom hook and destructure the values
+  const { loggedInUser } = useLoggedInUser();
+
+
   // Initialize state for the phone number input
   // If initialPhoneNumber is empty, use an empty string as default
   const [phoneNumber, setPhoneNumber] = useState(initialPhoneNumber || "");
@@ -69,17 +76,13 @@ export default function PhoneNumberEdit({
       try {
 
         // API Put call
-        const response = await axios.put(`/api/users/${userId}`, {
+        const response = await axios.put(`http://localhost:5004/api/users/${loggedInUser.user_id}`, {
           user_phone: phoneNumber
         });
 
         // If valid: save the number and close edit menu
         onSave(phoneNumber);
         toggleEditMenu();
-
-        
-
-
 
       } catch (error) {
         setError(error.response?.data?.message || "Failed to update Phone Info")
@@ -124,6 +127,8 @@ export default function PhoneNumberEdit({
               margin: "5px",
               width: "300px",
             }}
+                        // Disable the field while loading
+                        disabled={isloading}
           />
         </Box>
 
