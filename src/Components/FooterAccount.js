@@ -25,7 +25,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function FooterAccount() {
   return (
-    <Box class="footer" sx={{ 
+    <Box className="footer" sx={{ 
         width: '100%',
         justifyContent: "center",
         alignItems: "center",
@@ -35,8 +35,8 @@ export default function FooterAccount() {
         margin: 'auto',
          }}>
         <Grid size={1}>
-            <Item class="footer-menu">
-                <ul class="footer-list">
+            <Item className="footer-menu">
+                <ul className="footer-list">
                     <li>Support</li>
                     <li><a href="#">Help Center</a></li>
                     <li><a href="#">Get help with a safety issue</a></li>
@@ -49,8 +49,8 @@ export default function FooterAccount() {
             </Item>
         </Grid>
         <Grid size={1}>
-            <Item class="footer-menu">
-                <ul class="footer-list">
+            <Item className="footer-menu">
+                <ul className="footer-list">
                     <li>Hosting</li>
                     <li><a href="#">Bearbnb your home</a></li>
                     <li><a href="#">BearCover for Hosts</a></li>
@@ -64,8 +64,8 @@ export default function FooterAccount() {
             </Item>
         </Grid>
         <Grid size={1}>
-            <Item class="footer-menu">
-            <ul class="footer-list">
+            <Item className="footer-menu">
+            <ul className="footer-list">
                 <li>Bearbnb</li>
                 <li><a href="#">Newsroom</a></li>
                 <li><a href="#">New features</a></li>
@@ -78,8 +78,8 @@ export default function FooterAccount() {
         </Grid>
       </Grid>
       <Divider />
-      <div class="footer-small">
-        <div class="footer-info">
+      <div className="footer-small">
+        <div className="footer-info">
           <p>© 2025 Airbnb, Inc.  ·  Terms ·  Sitemap  ·  Privacy  ·  Your Privacy Choices</p>
           <EditAttributesIcon fontSize="small" sx={{
             fill: "rgb(0, 102, 255)", 
@@ -87,7 +87,7 @@ export default function FooterAccount() {
             marginLeft: "4px",
           }}/>
         </div>
-        <p class="footer-extra">
+        <p className="footer-extra">
             <LanguageIcon fontSize="small" sx={{
               alignSelf: "center",
               marginLeft: "12px",
