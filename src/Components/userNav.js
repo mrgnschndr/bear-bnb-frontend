@@ -6,12 +6,16 @@ import React, { useState } from 'react';
 import { Button, Menu, MenuItem } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
 import MenuIcon from '@mui/icons-material/Menu';
+import { useUser } from "../context/UserContext";
 
 // Define the UserNav component
 export default function UserNav() {
   // State management for the menu
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+
+  // Access user context
+  const { loggedInUser, logOutUser } = useUser(null);
 
   // Event handler for opening the menu
   const handleClick = (event) => {
@@ -67,10 +71,30 @@ export default function UserNav() {
           },
         }}
       >
-        {/* Menu items - each closes menu when clicked */}
-        <MenuItem onClick={handleClose}>Login</MenuItem>
-        <MenuItem onClick={handleClose}>Sign up</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
+        {/* Conditional rendering without Fragments */}
+        {loggedInUser
+          ? [
+              <MenuItem key="welcome" onClick={handleClose}>
+                Welcome, {loggedInUser.user_first_name}
+              </MenuItem>,
+              <MenuItem
+                key="logout"
+                onClick={() => {
+                  logOutUser();
+                  handleClose();
+                }}
+              >
+                Logout
+              </MenuItem>,
+            ]
+          : [
+              <MenuItem key="login" onClick={handleClose}>
+                Login
+              </MenuItem>,
+              <MenuItem key="signup" onClick={handleClose}>
+                Sign up
+              </MenuItem>,
+            ]}
       </Menu>
     </div>
   );

@@ -4,12 +4,14 @@ import axios from "axios";
 // Create a context for user-related data
 const UserContext = createContext();
 
-// Define the UserProvider component to manage the user fetching logic
+// Define the UserProvider component to manage the user fetching and login simulation logic
 export function UserProvider({ children }) {
   // State variable to hold the list of users // Jess has this as null in her video
   const [users, setUsers] = useState([]);
   // State variable to track the loading state (for example, during data fetching)
   const [loading, setLoading] = useState(true);
+  // State variable to track the logged-in user
+  const [loggedInUser, setLoggedInUser] = useState(null);
 
   // Asynchronous function to fetch users using axios
   const fetchUsers = async () => {
@@ -18,6 +20,9 @@ export function UserProvider({ children }) {
       if (response.data.success) {
         console.log("All users from database:", response.data.data);
         setUsers(response.data.data); // Update the users state with fetched data
+        if (response.data.data.length > 0) {
+          setLoggedInUser(response.data.data[0]);
+        }
       } else {
         console.error(response.data.message); // Log the error message if fetching fails
       }
@@ -35,9 +40,27 @@ export function UserProvider({ children }) {
     fetchUsers();
   }, []); // Empty dependency array ensures the effect runs only once when the component mounts
 
+  // Function to simulate a user logging in
+  const logInUser = (user) => {
+    setLoggedInUser(user);
+  };
+
+  // Function to simulate logging out
+  const logOutUser = () => {
+    setLoggedInUser(null);
+  };
+
   return (
-    // Provide the users and loading state to child components through context
-    <UserContext.Provider value={{ users, loading }}>
+    // Provide users, loading state, logged-in user, and login functions to child components
+    <UserContext.Provider
+      value={{
+        users,
+        loading,
+        loggedInUser,
+        logInUser,
+        logOutUser,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );
@@ -45,14 +68,11 @@ export function UserProvider({ children }) {
 
 // Custom hook to access user context in other components
 export function useUser() {
-  // Use the useContext hook to consume the UserContext
   const context = useContext(UserContext);
 
-  // If the context is undefined (i.e., the hook is used outside of a UserProvider), throw an error
   if (context === undefined) {
     throw new Error("useUser must be used within a UserProvider");
   }
 
-  // Return the context, which contains users and loading
   return context;
 }
