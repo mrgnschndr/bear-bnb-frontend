@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 // Import Material-UI Box component for layout container
 import Box from "@mui/material/Box";
+// Import Axios
+import axios from "axios";
 
 /**
  * PhoneNumberEdit Component
@@ -18,6 +20,7 @@ export default function PhoneNumberEdit({
   initialPhoneNumber,
   onSave,
   toggleEditMenu,
+  userId,
 }) {
   // Initialize state for the phone number input
   // If initialPhoneNumber is empty, use an empty string as default
@@ -26,6 +29,9 @@ export default function PhoneNumberEdit({
   // Initialize state for error message
   // Empty string means no error
   const [error, setError] = useState("");
+
+  // Adding in a is loading state
+  const [isloading, setIsLoading] = useState("")
 
   /**
    * validatePhoneNumber
@@ -55,14 +61,32 @@ export default function PhoneNumberEdit({
    * Processes the save action when user clicks save button
    * Validates number first, then either saves or shows error
    */
-  const handleSave = () => {
+  const handleSave = async () => {
     // Check if phone number is valid
     if (validatePhoneNumber(phoneNumber)) {
-      // If valid: save the number and close edit menu
-      onSave(phoneNumber);
-      toggleEditMenu();
-    } else {
-      // If invalid: show error message
+      // On check start loading
+      setIsLoading(true);
+      try {
+
+        // API Put call
+        const response = await axios.put(`/api/users/${userId}`, {
+          user_phone: phoneNumber
+        });
+
+        // If valid: save the number and close edit menu
+        onSave(phoneNumber);
+        toggleEditMenu();
+
+        
+
+
+
+      } catch (error) {
+        setError(error.response?.data?.message || "Failed to update Phone Info")
+      } finally {
+        setIsLoading(false);
+      }
+    }else {
       setError("Please enter a valid phone number");
     }
   };
