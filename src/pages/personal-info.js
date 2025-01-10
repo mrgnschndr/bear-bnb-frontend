@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './personal-info.css';
+import '../Components/Footer';
 
 //Legal Name
 import LegalName from "../Components/legalName";
