@@ -16,7 +16,7 @@ export function UserProvider({ children }) {
   // Asynchronous function to fetch users using axios
   const fetchUsers = async () => {
     try {
-      const response = await axios.get("http://localhost:5004/api/users");
+      const response = await axios.get("http://localhost:5001/api/users");
       if (response.data.success) {
         console.log("All users from database:", response.data.data);
         setUsers(response.data.data); // Update the users state with fetched data
