@@ -1,19 +1,25 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';  // Import BrowserRouter
-import Nav from './Components/Nav.js';  // Your navigation component
+import { Routes, Route } from 'react-router-dom';
 import PersonalInfo from './pages/personal-info.js'
+import Home from './pages/home';
 import Footer from './Components/Footer';
+import Nav from './Components/Nav';
 
 function App() {
   return (
-    <Router> 
-      <div className="App">
-        <Nav />
-        <PersonalInfo />
-        <Footer />
-      </div>
-    </Router>
+    <>
+      <Router> 
+      <Nav />
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/personal-info" element={<PersonalInfo />} />
+        </Routes>
+      <Footer />
+      </Router>
+    </>
   );
 }
 
