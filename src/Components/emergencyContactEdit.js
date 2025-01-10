@@ -8,7 +8,6 @@ export default function EmergencyContactEdit({
     toggleEditMenu,
     onSave,
     initialEmergencyContact,
-    userId
 }) {
 
     // Destructure assignment from custom hook
@@ -24,10 +23,10 @@ export default function EmergencyContactEdit({
     const [isLoading, setIsLoading] = useState("")
 
     // Handle input changes for each field
-    const handleInputChange = (field, value) => {
+    const handleInputChange = (key, value) => {
         setEmergencyContact((prev) => ({
             ...prev,
-            [field]: value,
+            [key]: value,
         }));
     };
 

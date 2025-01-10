@@ -9,7 +9,6 @@ export default function LegalNameEdit({
     onSave,
     initialFirstName,
     initialLastName,
-    userId
 }) {
 
     // Destructure assignment from custom hook
