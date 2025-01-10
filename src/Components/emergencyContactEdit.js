@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import axios from 'axios';
@@ -7,7 +7,8 @@ import { useLoggedInUser } from '../hooks/useLoggedInUser';
 export default function EmergencyContactEdit({ 
     toggleEditMenu,
     onSave,
-    initialEmergencyContact
+    initialEmergencyContact,
+    userId
 }) {
 
     // Destructure assignment from custom hook
@@ -18,6 +19,9 @@ export default function EmergencyContactEdit({
 
     //Initialize state for error message
     const [error, setError] = useState("");
+
+    //Initialize loading state
+    const [isLoading, setIsLoading] = useState("")
 
     //handleSave: process save action when user clicks save button
     const handleSave = async () => {
@@ -60,7 +64,7 @@ export default function EmergencyContactEdit({
                         id="outlined-required"
                         value={emergencyContact.name}
                         onChange={(e) => {
-                            setEmergencyContact.name(e.target.value);
+                            setEmergencyContact(e.target.value);
                         }}
                         variant="outlined"
                         sx={{
@@ -73,7 +77,7 @@ export default function EmergencyContactEdit({
                         id="outlined-required"
                         value={emergencyContact.relationship}
                         onChange={(e) => {
-                            setEmergencyContact.relationship(e.target.value);
+                            setEmergencyContact(e.target.value);
                         }}
                         variant="outlined"
                         sx={{
@@ -86,7 +90,7 @@ export default function EmergencyContactEdit({
                         id="outlined-required"
                         value={emergencyContact.email}
                         onChange={(e) => {
-                            setEmergencyContact.email(e.target.value);
+                            setEmergencyContact(e.target.value);
                         }}
                         variant="outlined"
                         sx={{
@@ -99,7 +103,7 @@ export default function EmergencyContactEdit({
                         id="outlined-required"
                         value={emergencyContact.phone}
                         onChange={(e) => {
-                            setEmergencyContact.phone(e.target.value);
+                            setEmergencyContact(e.target.value);
                         }}
                         variant="outlined"
                         sx={{
