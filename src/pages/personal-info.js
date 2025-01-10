@@ -58,6 +58,8 @@ export default function PersonalInfo() {
    * the view (PhoneNumber) and edit (PhoneNumberEdit) components
    */
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   /**
    * toggleEditMenu
@@ -94,6 +96,12 @@ export default function PersonalInfo() {
         // Edit mode - show LegalNameEdit component
         <LegalNameEdit
           toggleEditMenu={() => toggleEditMenu("legalName")} // Pass toggle function
+          initialFirstName={firstName} // Pass current legal name as starting value
+          initialLastName={lastName}
+          onSave={() => {
+            setFirstName();
+            setLastName();
+          }} // Pass function to update first and last name
         />
       )}
 
