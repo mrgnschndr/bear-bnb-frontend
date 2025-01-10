@@ -69,7 +69,7 @@ export default function PersonalInfo() {
     name: "",
     relationship: "",
     email: "",
-    phoneNumber: "",
+    phone: "",
   });
 
   /**
@@ -183,7 +183,7 @@ export default function PersonalInfo() {
         <EmergencyContactEdit
           toggleEditMenu={() => toggleEditMenu("emergencyContact")} // Pass toggle function
           onSave={setEmergencyContact}
-          initialPhoneNumber={emergencyContact}
+          initialEmergencyContact={emergencyContact}
 
         />
       )}

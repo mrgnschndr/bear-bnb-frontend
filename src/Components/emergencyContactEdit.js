@@ -4,7 +4,51 @@ import Box from '@mui/material/Box';
 import axios from 'axios';
 import { useLoggedInUser } from '../hooks/useLoggedInUser';
 
-export default function EmergencyContactEdit({ toggleEditMenu }) {
+export default function EmergencyContactEdit({ 
+    toggleEditMenu,
+    onSave,
+    initialEmergencyContact
+}) {
+
+    // Destructure assignment from custom hook
+    const { loggedInUser } = useLoggedInUser();
+
+    //Initialize state and modifier function for emergency contact input
+    const [emergencyContact, setEmergencyContact] = useState(initialEmergencyContact || "");
+
+    //Initialize state for error message
+    const [error, setError] = useState("");
+
+    //handleSave: process save action when user clicks save button
+    const handleSave = async () => {
+        // Start loading phase
+        setIsLoading(true);
+
+        try {
+            const res = await axios.put(`http://localhost:5004/api/users/${loggedInUser.user_id}`, {
+                user_econtact_name: emergencyContact.name,
+                user_econtact_relationship: emergencyContact.relationship,
+                user_econtact_email: emergencyContact.email,
+                user_econtact_phone: emergencyContact.phone
+            });
+
+            onSave(
+                emergencyContact.name &&
+                emergencyContact.relationship &&
+                emergencyContact.email &&
+                emergencyContact.phone
+            );
+
+            toggleEditMenu();
+            console.log(res);
+
+        } catch (error) {
+            setError(error.response?.data?.message || "Failed to update emergency contact");
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
     return (
         <div className="info-section">
             <div className='left-aligned'> 
@@ -14,7 +58,10 @@ export default function EmergencyContactEdit({ toggleEditMenu }) {
                     <TextField
                         label="Name"
                         id="outlined-required"
-                        defaultValue=""
+                        value={emergencyContact.name}
+                        onChange={(e) => {
+                            setEmergencyContact.name(e.target.value);
+                        }}
                         variant="outlined"
                         sx={{
                             margin: '5px',
@@ -24,7 +71,10 @@ export default function EmergencyContactEdit({ toggleEditMenu }) {
                     <TextField
                         label="Relationship"
                         id="outlined-required"
-                        defaultValue=""
+                        value={emergencyContact.relationship}
+                        onChange={(e) => {
+                            setEmergencyContact.relationship(e.target.value);
+                        }}
                         variant="outlined"
                         sx={{
                             margin: '5px',
@@ -34,7 +84,10 @@ export default function EmergencyContactEdit({ toggleEditMenu }) {
                     <TextField
                         label="Email"
                         id="outlined-required"
-                        defaultValue=""
+                        value={emergencyContact.email}
+                        onChange={(e) => {
+                            setEmergencyContact.email(e.target.value);
+                        }}
                         variant="outlined"
                         sx={{
                             margin: '5px',
@@ -44,7 +97,10 @@ export default function EmergencyContactEdit({ toggleEditMenu }) {
                         <TextField
                         label="Phone number"
                         id="outlined-required"
-                        defaultValue=""
+                        value={emergencyContact.phone}
+                        onChange={(e) => {
+                            setEmergencyContact.phone(e.target.value);
+                        }}
                         variant="outlined"
                         sx={{
                             margin: '5px',
@@ -52,7 +108,10 @@ export default function EmergencyContactEdit({ toggleEditMenu }) {
                         }}
                     ></TextField>
                 </Box>
-                <button className='save-btn'>Save</button>
+
+                <button className='save-btn' onClick={handleSave}>
+                    Save
+                </button>
             </div>
             <button onClick={toggleEditMenu}>Cancel</button>
         </div>
