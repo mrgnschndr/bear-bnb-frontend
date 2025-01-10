@@ -168,6 +168,13 @@ button.save-btn {
     margin: 0 8px 0 8px;
 }
 
+.econtact-list {
+    list-style-type: none;
+    color: #6A6A6A;
+    margin-left: 0;
+    padding: 0
+}
+
 
 @media all and (max-width: 740px) {
     .city-state {

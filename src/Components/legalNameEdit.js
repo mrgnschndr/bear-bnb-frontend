@@ -9,15 +9,14 @@ export default function LegalNameEdit({
     onSave,
     initialFirstName,
     initialLastName,
-    userId
 }) {
 
     // Destructure assignment from custom hook
     const { loggedInUser } = useLoggedInUser();
 
     //Initialize state and modifier function for legal name input
-    const [firstName, setFirstName] = useState(initialFirstName|| "");
-    const [lastName, setLastName] = useState(initialLastName|| "");
+    const [firstName, setFirstName] = useState(initialFirstName || "");
+    const [lastName, setLastName] = useState(initialLastName || "");
 
     //Initialize state for error message
     const [error, setError] = useState("");
@@ -40,10 +39,10 @@ export default function LegalNameEdit({
             onSave(firstName && lastName);
 
             toggleEditMenu();
-            console.log(res)
+            console.log(res);
         
-        } catch (err) {
-            setError(err.response?.data?.message || "Failed to update Legal Name")
+        } catch (error) {
+            setError(error.response?.data?.message || "Failed to update Legal Name")
         } finally {
             setIsLoading(false);
         }

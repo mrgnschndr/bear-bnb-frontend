@@ -58,9 +58,20 @@ export default function PersonalInfo() {
    * This state is lifted up to this level so it can be shared between
    * the view (PhoneNumber) and edit (PhoneNumberEdit) components
    */
+  // State delcaration for phone number
   const [phoneNumber, setPhoneNumber] = useState("");
+
+  // State declarations for first and last name
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+
+  // State declaration for emergency contact info
+  const [emergencyContact, setEmergencyContact] = useState({
+    name: "",
+    relationship: "",
+    email: "",
+    phone: "",
+  });
 
   /**
    * toggleEditMenu
@@ -172,6 +183,8 @@ export default function PersonalInfo() {
         // Edit mode - show Email Address component
         <EmergencyContactEdit
           toggleEditMenu={() => toggleEditMenu("emergencyContact")} // Pass toggle function
+          onSave={setEmergencyContact}
+          initialEmergencyContact={emergencyContact}
 
         />
       )}
