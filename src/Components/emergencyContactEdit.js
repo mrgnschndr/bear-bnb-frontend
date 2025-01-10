@@ -23,6 +23,14 @@ export default function EmergencyContactEdit({
     //Initialize loading state
     const [isLoading, setIsLoading] = useState("")
 
+    // Handle input changes for each field
+    const handleInputChange = (field, value) => {
+        setEmergencyContact((prev) => ({
+            ...prev,
+            [field]: value,
+        }));
+    };
+
     //handleSave: process save action when user clicks save button
     const handleSave = async () => {
         // Start loading phase
@@ -64,7 +72,7 @@ export default function EmergencyContactEdit({
                         id="outlined-required"
                         value={emergencyContact.name}
                         onChange={(e) => {
-                            setEmergencyContact(e.target.value);
+                            handleInputChange('name', e.target.value);
                         }}
                         variant="outlined"
                         sx={{
@@ -77,7 +85,7 @@ export default function EmergencyContactEdit({
                         id="outlined-required"
                         value={emergencyContact.relationship}
                         onChange={(e) => {
-                            setEmergencyContact(e.target.value);
+                            handleInputChange('relationship', e.target.value);
                         }}
                         variant="outlined"
                         sx={{
@@ -90,7 +98,7 @@ export default function EmergencyContactEdit({
                         id="outlined-required"
                         value={emergencyContact.email}
                         onChange={(e) => {
-                            setEmergencyContact(e.target.value);
+                            handleInputChange('email', e.target.value);
                         }}
                         variant="outlined"
                         sx={{
@@ -103,7 +111,7 @@ export default function EmergencyContactEdit({
                         id="outlined-required"
                         value={emergencyContact.phone}
                         onChange={(e) => {
-                            setEmergencyContact(e.target.value);
+                            handleInputChange('phone', e.target.value);
                         }}
                         variant="outlined"
                         sx={{
