@@ -1,11 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, TextField, InputLabel, FormControl, Select, MenuItem } from '@mui/material';
+import axios from 'axios';
+import { useLoggedInUser } from "../hooks/useLoggedInUser";
 
-export default function AddressEdit({ toggleEditMenu }) {
-    const [country, setCountry] = React.useState("US");
-    const handleChange = (event) => {
-        setCountry(event.target.value);
+export default function AddressEdit({ 
+    toggleEditMenu,
+    onSave,
+    initialAddress
+}) {
+
+    // Destructure assignment from custom hook
+    const { loggedInUser } = useLoggedInUser();
+
+    // Initialize state and modifier function for full user address
+    const [address, setAddress] = useState(initialAddress);
+
+    //Initialize state for error message
+    const [error, setError] = useState("");
+
+    //Initialize loading state
+    const [isLoading, setIsLoading] = useState("")
+
+    // Handle input changes for each field
+    const handleInputChange = (key, value) => {
+        setAddress((prev) => ({
+            ...prev,
+            [key]: value,
+        }));
+    };
+
+    //handleSave: process save action when user clicks save button
+    const handleSave = async () => {
+        // Start loading phase
+        setIsLoading(true);
+
+        try {
+            const res = await axios.put(`http://localhost:5004/api/users/${loggedInUser.user_id}`, {
+                user_address_one: address.lineOne,
+                user_apt: address.aptsuite,
+                user_city: address.city,
+                user_state: address.state,
+                user_country: address.country,
+                user_postal_code: address.postalCode
+            });
+
+            onSave(
+                address.lineOne &&
+                address.aptsuite &&
+                address.city &&
+                address.state &&
+                address.country &&
+                address.postalCode
+            );
+
+            toggleEditMenu();
+            console.log(res)
+
+            } catch (error) {
+                setError(error.response?.data?.message || "Failed to update emergency contact");
+            } finally {
+                setIsLoading(false)
+        }
     }
+
+    // const [country, setCountry] = React.useState("US");
+    // const handleChange = (event) => {
+    //     setCountry(event.target.value);
+    // }
     return (
         <div className="info-section-edit">
             <div className='left-aligned'> 
@@ -17,9 +78,11 @@ export default function AddressEdit({ toggleEditMenu }) {
                         <Select className="select-form"
                             labelId="country-select-label"
                             id="country-select"
-                            value={country}
                             label="Country/region"
-                            onChange={handleChange}
+                            value={address.country}
+                            onChange={(e) => {
+                                handleInputChange('country', e.target.value);
+                            }}
                         >
                                 <MenuItem value={"AR"}>Argentina</MenuItem>
                                 <MenuItem value={"AU"}>Australia</MenuItem>
@@ -60,7 +123,10 @@ export default function AddressEdit({ toggleEditMenu }) {
                     <TextField
                         id="outlined"
                         label="Street address"
-                        defaultValue=""
+                        value={address.lineOne}
+                        onChange={(e) => {
+                            handleInputChange('lineOne', e.target.value);
+                        }}
                         variant="outlined"
                         fullWidth
                         margin="normal"
@@ -68,7 +134,10 @@ export default function AddressEdit({ toggleEditMenu }) {
                     <TextField
                         id="outlined"
                         label="Apt, suite. (optional)"
-                        defaultValue=""
+                        value={address.aptsuite}
+                        onChange={(e) => {
+                            handleInputChange('aptsuite', e.target.value);
+                        }}
                         variant="outlined"
                         fullWidth
                         margin="normal"
@@ -77,7 +146,10 @@ export default function AddressEdit({ toggleEditMenu }) {
                     <TextField
                         id="outlined"
                         label="City"
-                        defaultValue=""
+                        value={address.city}
+                        onChange={(e) => {
+                            handleInputChange('city', e.target.value);
+                        }}
                         variant="outlined"
                         fullWidth
                         margin="normal"
@@ -85,7 +157,10 @@ export default function AddressEdit({ toggleEditMenu }) {
                     <TextField
                         id="outlined"
                         label="State / Province / County / Region"
-                        defaultValue=""
+                        value={address.state}
+                        onChange={(e) => {
+                            handleInputChange('state', e.target.value);
+                        }}
                         variant="outlined"
                         fullWidth
                         margin="normal"
@@ -94,14 +169,18 @@ export default function AddressEdit({ toggleEditMenu }) {
                     <TextField
                         id="outlined"
                         label="ZIP code"
-                        defaultValue=""
+                        value={address.postalCode}
+                        onChange={(e) => {
+                            handleInputChange('postalCode', e.target.value);
+                        }}
                         variant="outlined"
                         fullWidth
                         margin="normal"
                     ></TextField>
                 </Box>
+
                 </div>
-                <button className='save-btn'>Save and continue</button>
+                <button className='save-btn' onClick={handleSave}>Save and continue</button>
             </div>
             <button className="cancel-btn" onClick={toggleEditMenu}>Cancel</button>
         </div>
