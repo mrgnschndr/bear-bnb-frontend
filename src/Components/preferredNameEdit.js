@@ -39,7 +39,7 @@ export default function PreferredNameEdit({
         } finally {
             setIsLoading(false);
         }
-    }
+    };
 
 
     return (
@@ -54,8 +54,13 @@ export default function PreferredNameEdit({
                     id="outlined-password-input"
                     fullWidth label="Preferred name (optional)"
                     input type="name"
+                    value={nickName}
+                    onChange={(e) => {
+                        setNickName(e.target.value)
+                    }}
                     />
-                <button type="submit" className="save-btn">Save</button>
+
+                <button type="submit" className="save-btn" onClick={handleSave}>Save</button>
             </div>
             <button className="cancel-btn" onClick={toggleEditMenu}>Cancel</button>
         </div>
