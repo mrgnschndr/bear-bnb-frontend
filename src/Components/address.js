@@ -8,11 +8,13 @@ export default function Address({ toggleEditMenu }) {
     // Check if address fields are available and join them with commas
     const userAddress = loggedInUser
         ? [
-            //TODO: Address street here
+            loggedInUser.user_address_one,
+            loggedInUser.user_address_apt,
             loggedInUser.user_city,
             loggedInUser.user_state,
-            //TODO: Postal code here
             loggedInUser.user_country,
+            loggedInUser.user_postal_code
+            
         ].filter(Boolean).join(', ') // Filter out any empty values and join with commas
         : "Not Provided";
 
