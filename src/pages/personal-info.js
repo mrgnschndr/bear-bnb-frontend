@@ -73,6 +73,9 @@ export default function PersonalInfo() {
     phone: "",
   });
 
+  // State declaration for email address
+  const [emailAddress, setEmailAddress] = useState("");
+
   /**
    * toggleEditMenu
    * Switches a section between view and edit modes
@@ -153,6 +156,8 @@ export default function PersonalInfo() {
         // View mode - show PhoneNumber component
         <EmailAddress
           toggleEditMenu={() => toggleEditMenu("emailAddress")} // Pass toggle function
+          onSave={setEmailAddress}
+          initialEmailAddress={emailAddress}
         />
       ) : (
         // Edit mode - show Email Address component
@@ -160,6 +165,7 @@ export default function PersonalInfo() {
           toggleEditMenu={() => toggleEditMenu("emailAddress")} // Pass toggle function
         />
       )}
+      
       {/* Address Section*/}
       {/* Ternary operator determines which version to show */}
       {!editStates.address ? (

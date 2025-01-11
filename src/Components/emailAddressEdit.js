@@ -1,8 +1,46 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
+import axios from 'axios';
+import { useLoggedInUser } from '../hooks/useLoggedInUser';
 
-export default function EmailAddressEdit({ toggleEditMenu }) {
+export default function EmailAddressEdit({ 
+    toggleEditMenu,
+    onSave,
+    initialEmailAddress
+}) {
+
+    // Destructure assignment from custom hook
+    const { loggedInUser } = useLoggedInUser();
+
+    // Initialize state and modifier for email address
+    const [emailAddress, setEmailAddress] = useState(initialEmailAddress || "");
+
+    // Initialize loading state
+    const [isLoading, setIsLoading] = useState("");
+
+    // handleSave function processes save action when user clicks button
+    const handleSave = async () => {
+        setIsLoading(true); //start loading phase
+
+        try {
+            // PUT request
+            const res = await axios.put(`http://localhost:5004/api/users/${loggedInUser.user_id}`, {
+                user_email: emailAddress
+            });
+
+            onSave(emailAddress);
+
+            toggleEditMenu();
+            console.log(res);
+
+        } catch (error) {
+            setError(error.response?.data?.message || "Failed to update email address");
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
     return (
         <div className="info-section">
             <div className='left-aligned'> 
