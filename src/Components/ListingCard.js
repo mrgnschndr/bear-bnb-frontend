@@ -24,16 +24,16 @@ export default function ListingCard() {
           }}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div" fontSize="0.85rem" fontWeight="bold">
+          <Typography variant="h5" component="div" fontSize="0.65rem" fontWeight="bold">
             Winkelbach, Germany
           </Typography>
-          <Typography variant="body2" fontSize="0.85rem" sx={{ color: 'text.secondary' }}>
+          <Typography variant="body2" fontSize="0.65rem" fontWeight='500' sx={{ color: 'text.secondary' }}>
             89 kilometers away
           </Typography>
-          <Typography variant="body2" fontSize="0.85rem" sx={{ color: 'text.secondary' }}>
+          <Typography gutterBottom variant="body2" fontSize="0.65rem" sx={{ color: 'text.secondary' }}>
             Jan 26 – 31
           </Typography>
-          <Typography variant="body2" fontSize="0.85rem" sx={{ 
+          <Typography variant="body2" fontSize="0.65rem" sx={{ 
             color: 'black',
             fontWeight: 'bold',
              }}>
