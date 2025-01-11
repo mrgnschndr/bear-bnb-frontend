@@ -5,8 +5,16 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 
+
+
+
+
 export default function ListingCard() {
-  return (
+  
+const listing = true;
+  
+  
+    return (
     <Card sx={{ 
         maxWidth: '0.2vw',
         border: 'none',
@@ -23,9 +31,10 @@ export default function ListingCard() {
           }}
         />
         <CardContent>
-          <Typography variant="h5" component="div" fontSize="0.65rem" fontWeight="bold">
-            Winkelbach, Germany
-          </Typography>
+          { listing && <Typography variant="h5" component="div" fontSize="0.65rem" fontWeight="bold">
+            {/* `${listingCity},${listingState}` */}
+            Listing City, State
+          </Typography>}
           <Typography variant="body2" fontSize="0.65rem" fontWeight='500' sx={{ color: 'text.secondary' }}>
             89 kilometers away
           </Typography>
