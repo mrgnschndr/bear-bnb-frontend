@@ -4,7 +4,6 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
-import { Calculate } from '@mui/icons-material';
 
 export default function ListingCard() {
   return (
@@ -18,7 +17,7 @@ export default function ListingCard() {
           component="img"
           height="140"
           image="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTIyNDQwMTA4MDMyMzk3NjYwOQ%3D%3D/original/ab966ef2-5920-405d-b96f-f06a564fe073.jpeg?im_w=720&im_format=avif"
-          alt="green iguana"
+          alt="Available Bearbnb rental listing"
           sx={{
             borderRadius: '8px',
           }}
