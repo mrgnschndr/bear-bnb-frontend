@@ -13,7 +13,7 @@ export default function PreferredName({ toggleEditMenu }) {
           {/* Conditionally render the user's full name or a fallback */}
           {loggedInUser
             // TODO: We need to think about adding nickname to the DB
-            ? `${loggedInUser.user_first_name} ${loggedInUser.user_last_name}`
+            ? `${loggedInUser.user_nickname}`
             : "Not Provided"}
         </p>
       </div>
