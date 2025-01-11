@@ -75,7 +75,7 @@ export default function PersonalInfo() {
 
     // State declaration for full address
     const [address, setAddress] = useState({
-      addressLine1: "",
+      lineOne: "",
       aptsuite: "",
       city: "",
       state: "",

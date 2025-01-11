@@ -29,6 +29,37 @@ export default function AddressEdit({
         }));
     };
 
+    //handleSave: process save action when user clicks save button
+    const handleSave = async () => {
+        // Start loading phase
+        setIsLoading(true);
+
+        try {
+            const res = await axios.put(`http://localhost:5004/api/users/${loggedInUser.user_id}`, {
+                user_address_one: address.lineOne,
+                user_apt: address.aptsuite,
+                user_city: address.city,
+                user_state: address.state,
+                user_country: address.country,
+                user_postal_code: address.postalCode
+            });
+
+            onSave(
+                address.lineOne &&
+                address.aptsuite &&
+                address.city &&
+                address.state &&
+                address.country &&
+                address.postalCode
+            );
+
+            toggleEditMenu();
+            console.log(res)
+
+            
+            }
+        }
+
 
     const [country, setCountry] = React.useState("US");
     const handleChange = (event) => {
