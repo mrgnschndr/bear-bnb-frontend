@@ -13,7 +13,7 @@ export default function AddressEdit({
     const { loggedInUser } = useLoggedInUser();
 
     // Initialize state and modifier function for full user address
-    const [address, setAddress] = useState("");
+    const [address, setAddress] = useState(initialAddress);
 
     //Initialize state for error message
     const [error, setError] = useState("");
@@ -23,7 +23,7 @@ export default function AddressEdit({
 
     // Handle input changes for each field
     const handleInputChange = (key, value) => {
-        setEmergencyContact((prev) => ({
+        setAddress((prev) => ({
             ...prev,
             [key]: value,
         }));
@@ -56,15 +56,17 @@ export default function AddressEdit({
             toggleEditMenu();
             console.log(res)
 
-            
-            }
+            } catch (error) {
+                setError(error.response?.data?.message || "Failed to update emergency contact");
+            } finally {
+                setIsLoading(false)
         }
-
-
-    const [country, setCountry] = React.useState("US");
-    const handleChange = (event) => {
-        setCountry(event.target.value);
     }
+
+    // const [country, setCountry] = React.useState("US");
+    // const handleChange = (event) => {
+    //     setCountry(event.target.value);
+    // }
     return (
         <div className="info-section-edit">
             <div className='left-aligned'> 
@@ -76,9 +78,11 @@ export default function AddressEdit({
                         <Select className="select-form"
                             labelId="country-select-label"
                             id="country-select"
-                            value={country}
                             label="Country/region"
-                            onChange={handleChange}
+                            value={address.country}
+                            onChange={(e) => {
+                                handleInputChange('country', e.target.value);
+                            }}
                         >
                                 <MenuItem value={"AR"}>Argentina</MenuItem>
                                 <MenuItem value={"AU"}>Australia</MenuItem>
@@ -119,7 +123,10 @@ export default function AddressEdit({
                     <TextField
                         id="outlined"
                         label="Street address"
-                        defaultValue=""
+                        value={address.lineOne}
+                        onChange={(e) => {
+                            handleInputChange('lineOne', e.target.value);
+                        }}
                         variant="outlined"
                         fullWidth
                         margin="normal"
@@ -127,7 +134,10 @@ export default function AddressEdit({
                     <TextField
                         id="outlined"
                         label="Apt, suite. (optional)"
-                        defaultValue=""
+                        value={address.aptsuite}
+                        onChange={(e) => {
+                            handleInputChange('aptsuite', e.target.value);
+                        }}
                         variant="outlined"
                         fullWidth
                         margin="normal"
@@ -136,7 +146,10 @@ export default function AddressEdit({
                     <TextField
                         id="outlined"
                         label="City"
-                        defaultValue=""
+                        value={address.city}
+                        onChange={(e) => {
+                            handleInputChange('city', e.target.value);
+                        }}
                         variant="outlined"
                         fullWidth
                         margin="normal"
@@ -144,7 +157,10 @@ export default function AddressEdit({
                     <TextField
                         id="outlined"
                         label="State / Province / County / Region"
-                        defaultValue=""
+                        value={address.state}
+                        onChange={(e) => {
+                            handleInputChange('state', e.target.value);
+                        }}
                         variant="outlined"
                         fullWidth
                         margin="normal"
@@ -153,14 +169,18 @@ export default function AddressEdit({
                     <TextField
                         id="outlined"
                         label="ZIP code"
-                        defaultValue=""
+                        value={address.postalCode}
+                        onChange={(e) => {
+                            handleInputChange('postalCode', e.target.value);
+                        }}
                         variant="outlined"
                         fullWidth
                         margin="normal"
                     ></TextField>
                 </Box>
+
                 </div>
-                <button className='save-btn'>Save and continue</button>
+                <button className='save-btn' onClick={handleSave}>Save and continue</button>
             </div>
             <button className="cancel-btn" onClick={toggleEditMenu}>Cancel</button>
         </div>
