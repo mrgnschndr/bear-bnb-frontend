@@ -4,7 +4,7 @@ import axios from "axios";
 // Create a context for listing-related data
 const listingContext = createContext();
 
-// Define the UserProvider component to manage the user fetching and login simulation logic
+// Define the Listing Provider component to manage the listing fetching and login simulation logic
 export function ListingProvider({ children }) {
   // State variable to hold the list of listings // Jess has this as null in her video
   const [listings, setListings] = useState([]);
@@ -15,13 +15,11 @@ export function ListingProvider({ children }) {
   // Asynchronous function to fetch listings using axios
   const fetchListings = async () => {
     try {
-      const response = await axios.get("http://localhost:5004/api/users");
+      console.log("Reaching line 18");
+      const response = await axios.get("http://localhost:5004/api/listings");
       if (response.data.success) {
         console.log("All listings from database:", response.data.data);
         setListings(response.data.data); // Update the listings state with fetched data
-        // if (response.data.data.length > 0) {
-        //   setLoggedInUser(response.data.data[0]);
-        // }
       } else {
         console.error(response.data.message); // Log the error message if fetching fails
       }
@@ -41,20 +39,20 @@ export function ListingProvider({ children }) {
 
   return (
     // Provide listings and loading state to child components
-    <ListingContext.Provider
+    <listingContext.Provider
       value={{
         listings,
         loading
       }}
     >
       {children}
-    </ListingContext.Provider>
+    </listingContext.Provider>
   );
 }
 
 // Custom hook to access listing context in other components
 export function useListing() {
-  const context = useContext(ListingContext);
+  const context = useContext(listingContext);
 
   if (context === undefined) {
     throw new Error("useListing must be used within a ListingProvider");
