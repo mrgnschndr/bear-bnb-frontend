@@ -73,6 +73,16 @@ export default function PersonalInfo() {
     phone: "",
   });
 
+    // State declaration for full address
+    const [address, setAddress] = useState({
+      addressLine1: "",
+      aptsuite: "",
+      city: "",
+      state: "",
+      country: "",
+      postalCode: "",
+    });
+
   // State declaration for email address
   const [emailAddress, setEmailAddress] = useState("");
 
@@ -180,8 +190,12 @@ export default function PersonalInfo() {
         />
       ) : (
         <AddressEdit
-        toggleEditMenu={() => toggleEditMenu
-          ("address")} /> )}
+          toggleEditMenu={() => toggleEditMenu ("address")} 
+          onSave={setAddress}
+          initialAddress={address}
+          
+          /> )}
+
 
       {/* Emergency Contact Section*/}
       {/* Ternary operator determines which version to show */}
