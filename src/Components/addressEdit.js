@@ -1,7 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, TextField, InputLabel, FormControl, Select, MenuItem } from '@mui/material';
+import axios from 'axios';
+import { useLoggedInUser } from "../hooks/useLoggedInUser";
 
-export default function AddressEdit({ toggleEditMenu }) {
+export default function AddressEdit({ 
+    toggleEditMenu,
+    onSave,
+    initialAddress
+}) {
+
+    // Destructure assignment from custom hook
+    const { loggedInUser } = useLoggedInUser();
+
+    // Initialize state and modifier function for full user address
+    const [address, setAddress] = useState("");
+
+    //Initialize state for error message
+    const [error, setError] = useState("");
+
+    //Initialize loading state
+    const [isLoading, setIsLoading] = useState("")
+
+    // Handle input changes for each field
+    const handleInputChange = (key, value) => {
+        setEmergencyContact((prev) => ({
+            ...prev,
+            [key]: value,
+        }));
+    };
+
+
     const [country, setCountry] = React.useState("US");
     const handleChange = (event) => {
         setCountry(event.target.value);
