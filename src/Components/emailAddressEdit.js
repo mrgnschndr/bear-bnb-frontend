@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }from 'react';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import axios from 'axios';
@@ -15,6 +15,9 @@ export default function EmailAddressEdit({
 
     // Initialize state and modifier for email address
     const [emailAddress, setEmailAddress] = useState(initialEmailAddress || "");
+
+    // Initialize state for error message
+    const [error, setError] = useState("");
 
     // Initialize loading state
     const [isLoading, setIsLoading] = useState("");
@@ -50,14 +53,18 @@ export default function EmailAddressEdit({
                     <TextField required
                         id="outlined-required"
                         label="email address"
-                        defaultValue=""
+                        value={emailAddress}
+                        onChange={(e) => {
+                            setEmailAddress(e.target.value)
+                        }}
                         variant="outlined"
                         sx={{
                             margin: '5px'
                         }}
                     ></TextField>
                 </Box>
-                <button className='save-btn'>Save and continue</button>
+
+                <button className='save-btn' onClick={handleSave}>Save and continue</button>
             </div>
             <button onClick={toggleEditMenu}>Cancel</button>
         </div>

@@ -156,16 +156,16 @@ export default function PersonalInfo() {
         // View mode - show PhoneNumber component
         <EmailAddress
           toggleEditMenu={() => toggleEditMenu("emailAddress")} // Pass toggle function
+          />
+        ) : (
+          // Edit mode - show Email Address component
+          <EmailAddressEdit
+          toggleEditMenu={() => toggleEditMenu("emailAddress")} // Pass toggle function
           onSave={setEmailAddress}
           initialEmailAddress={emailAddress}
         />
-      ) : (
-        // Edit mode - show Email Address component
-        <EmailAddressEdit
-          toggleEditMenu={() => toggleEditMenu("emailAddress")} // Pass toggle function
-        />
       )}
-      
+
       {/* Address Section*/}
       {/* Ternary operator determines which version to show */}
       {!editStates.address ? (
