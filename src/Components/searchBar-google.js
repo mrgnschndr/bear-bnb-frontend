@@ -11,7 +11,7 @@ import { debounce } from '@mui/material/utils';
 // This key was created specifically for the demo in mui.com.
 // You need to create a new one for your application.
 let apiKey=process.env.REACT_APP_GOOGLE_API_KEY;
-console.log("key", apiKey);
+// console.log("key", apiKey);
 
 function loadScript(src, position, id) {
   if (!position) {
