@@ -76,6 +76,9 @@ export default function PersonalInfo() {
   // State declaration for email address
   const [emailAddress, setEmailAddress] = useState("");
 
+  // State declaration for preferred name / nickname
+  const [nickName, setNickName] = useState("");
+
   /**
    * toggleEditMenu
    * Switches a section between view and edit modes
@@ -132,6 +135,8 @@ export default function PersonalInfo() {
         // Edit mode - show LegalNameEdit component
       <PreferredNameEdit 
         toggleEditMenu={() => toggleEditMenu("preferredName")} //Pass toggle function
+        onSave={setNickName}
+        initialNickName={nickName}
       />
       )}
       {/* Phone Number Section */}
