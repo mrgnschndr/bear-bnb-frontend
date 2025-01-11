@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid2';
 import Typography from '@mui/material/Typography';
 import parse from 'autosuggest-highlight/parse';
 import { debounce } from '@mui/material/utils';
-
+// Note: I got this all fro mui, but made an API key. Just make a .env file and put in REACT_APP_GOOGLE_API_KEY=*your api key from google*
 // This key was created specifically for the demo in mui.com.
 // You need to create a new one for your application.
 let apiKey=process.env.REACT_APP_GOOGLE_API_KEY;
@@ -91,7 +91,29 @@ export default function GoogleMaps() {
 
   return (
     <Autocomplete
-      sx={{ width: 300 }}
+      sx={{ width: 310, "& .MuiOutlinedInput-root": {
+          borderTopLeftRadius: "50px",
+          borderBottomLeftRadius: "50px",
+
+          legend: {
+            marginLeft: "30px"
+          }
+        },
+        "& .MuiAutocomplete-inputRoot": {
+          paddingLeft: "20px !important",
+          borderTopLeftRadius: "50px",
+          borderBottomLeftRadius: "50px",
+          
+        },
+        "& .MuiInputLabel-outlined": {
+          paddingLeft: "20px"
+        },
+        "& .MuiInputLabel-shrink": {
+          marginLeft: "20px",
+          paddingLeft: "10px",
+          paddingRight: 0,
+          background: "white"
+        }}}
       getOptionLabel={(option) =>
         typeof option === 'string' ? option : option.description
       }
@@ -132,7 +154,7 @@ export default function GoogleMaps() {
                   <Box
                     key={index}
                     component="span"
-                    sx={{ fontWeight: part.highlight ? 'bold' : 'regular' }}
+                   
                   >
                     {part.text}
                   </Box>
