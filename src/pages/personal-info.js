@@ -73,6 +73,12 @@ export default function PersonalInfo() {
     phone: "",
   });
 
+  // State declaration for email address
+  const [emailAddress, setEmailAddress] = useState("");
+
+  // State declaration for preferred name / nickname
+  const [nickName, setNickName] = useState("");
+
   /**
    * toggleEditMenu
    * Switches a section between view and edit modes
@@ -129,6 +135,8 @@ export default function PersonalInfo() {
         // Edit mode - show LegalNameEdit component
       <PreferredNameEdit 
         toggleEditMenu={() => toggleEditMenu("preferredName")} //Pass toggle function
+        onSave={setNickName}
+        initialNickName={nickName}
       />
       )}
       {/* Phone Number Section */}
@@ -153,13 +161,16 @@ export default function PersonalInfo() {
         // View mode - show PhoneNumber component
         <EmailAddress
           toggleEditMenu={() => toggleEditMenu("emailAddress")} // Pass toggle function
-        />
-      ) : (
-        // Edit mode - show Email Address component
-        <EmailAddressEdit
+          />
+        ) : (
+          // Edit mode - show Email Address component
+          <EmailAddressEdit
           toggleEditMenu={() => toggleEditMenu("emailAddress")} // Pass toggle function
+          onSave={setEmailAddress}
+          initialEmailAddress={emailAddress}
         />
       )}
+
       {/* Address Section*/}
       {/* Ternary operator determines which version to show */}
       {!editStates.address ? (
