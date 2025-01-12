@@ -24,7 +24,7 @@ export default function ListingCard({
     <Card className="listing-card" sx={{ 
         maxWidth: '0.2vw',
         border: 'none',
-        maxHeight: 'Calculate(maxWidth * 0.95)',
+        maxHeight: 'Calculate(maxWidth * 1.2)',
          }}>
       <CardActionArea>
         <CardMedia
