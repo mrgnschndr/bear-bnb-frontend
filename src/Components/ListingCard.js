@@ -5,12 +5,13 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 import '../pages/home.css';
+import { useNavigate } from "react-router-dom";
 
 
 
 export default function ListingCard({
-    key,
     title,
+    listingId,
     address,
     city,
     state,
@@ -19,6 +20,12 @@ export default function ListingCard({
 }) {
 
     const roundPrice = (price.split("."))[0];
+
+    let navigate = useNavigate(); 
+    const routeChange = () =>{ 
+      let path = `/api/listing/${listingId}`; 
+      navigate(path);
+  }
   
     return (
     <Card className="listing-card" sx={{ 
@@ -26,7 +33,7 @@ export default function ListingCard({
         border: 'none',
         maxHeight: 'Calculate(maxWidth * 0.95)',
          }}>
-      <CardActionArea>
+      <CardActionArea onClick={routeChange}>
         <CardMedia
           component="img"
           height="140"

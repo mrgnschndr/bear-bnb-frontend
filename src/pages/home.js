@@ -16,6 +16,7 @@ export default function Home() {
                 {listingArray.map((listing, index) => (
                     <ListingCard 
                         key = {index}
+                        listingId = {listing.listing_id}
                         title = {listing.listing_title}
                         address = {listing.listing_address}
                         city = {listing.listing_city}
