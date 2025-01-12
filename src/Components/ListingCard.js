@@ -23,7 +23,7 @@ export default function ListingCard({
 
     let navigate = useNavigate(); 
     const routeChange = () =>{ 
-      let path = `/api/listing/${listingId}`; 
+      let path = `/listing/${listingId}`; 
       navigate(path);
   }
   
