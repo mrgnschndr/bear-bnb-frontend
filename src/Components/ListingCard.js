@@ -16,7 +16,9 @@ export default function ListingCard({
     price
 
 }) {
-  
+
+    const roundPrice = (price.split("."))[0];
+    const capitalTitle = title.charAt(0).toUpperCase() + title.slice(1);
   
     return (
     <Card sx={{ 
@@ -36,7 +38,7 @@ export default function ListingCard({
         />
         <CardContent>
           <Typography variant="h5" component="div" fontSize="0.65rem" fontWeight="bold">
-            {title}
+            {capitalTitle}
           </Typography>
           <Typography variant="body2" fontSize="0.65rem" fontWeight='500' sx={{ color: 'text.secondary' }}>
             89 kilometers away
@@ -48,7 +50,7 @@ export default function ListingCard({
             color: 'black',
             fontWeight: 'bold',
              }}>
-            {price} per night
+            {roundPrice} per night
           </Typography>
         </CardContent>
       </CardActionArea>
