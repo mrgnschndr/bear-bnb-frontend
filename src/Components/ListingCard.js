@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
+import '../pages/home.css';
 
 
 
@@ -13,13 +14,14 @@ export default function ListingCard({
     address,
     city,
     state,
-    price
-
+    price,
+    mainImageURL
 }) {
-  
+
+    const roundPrice = (price.split("."))[0];
   
     return (
-    <Card sx={{ 
+    <Card className="listing-card" sx={{ 
         maxWidth: '0.2vw',
         border: 'none',
         maxHeight: 'Calculate(maxWidth * 0.95)',
@@ -28,7 +30,7 @@ export default function ListingCard({
         <CardMedia
           component="img"
           height="140"
-          image="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTIyNDQwMTA4MDMyMzk3NjYwOQ%3D%3D/original/ab966ef2-5920-405d-b96f-f06a564fe073.jpeg?im_w=720&im_format=avif"
+          image={mainImageURL}
           alt="Available Bearbnb rental listing"
           sx={{
             borderRadius: '8px',
@@ -36,10 +38,10 @@ export default function ListingCard({
         />
         <CardContent>
           <Typography variant="h5" component="div" fontSize="0.65rem" fontWeight="bold">
-            {title}
+            {city}, {state}
           </Typography>
           <Typography variant="body2" fontSize="0.65rem" fontWeight='500' sx={{ color: 'text.secondary' }}>
-            89 kilometers away
+            {Math.floor(Math.random() * 101)} miles away
           </Typography>
           <Typography gutterBottom variant="body2" fontSize="0.65rem" sx={{ color: 'text.secondary' }}>
             Jan 26 – 31
@@ -48,7 +50,7 @@ export default function ListingCard({
             color: 'black',
             fontWeight: 'bold',
              }}>
-            {price} per night
+            {roundPrice} per night
           </Typography>
         </CardContent>
       </CardActionArea>
