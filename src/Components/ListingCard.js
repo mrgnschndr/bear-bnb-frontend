@@ -48,7 +48,7 @@ export default function ListingCard({
             color: 'black',
             fontWeight: 'bold',
              }}>
-            ${price} per night
+            {price} per night
           </Typography>
         </CardContent>
       </CardActionArea>
