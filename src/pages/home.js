@@ -6,7 +6,8 @@ import { ListingContext } from '../context/ListingContext'
 
 
 export default function Home() {
-    const listingArray = useContext(ListingContext);
+    const { listingArray }  = useContext(ListingContext);
+    // console.log(listingArray)
 
     return(
         <>
