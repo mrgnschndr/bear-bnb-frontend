@@ -12,7 +12,7 @@ export default function Home() {
     return(
         <>
             <SearchBar />
-            <div>
+            <div class="listing-card-section">
                 {listingArray.map((listing, index) => (
                     <ListingCard 
                         key = {index}

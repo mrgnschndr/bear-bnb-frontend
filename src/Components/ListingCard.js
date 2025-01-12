@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
+import '../pages/home.css';
 
 
 
@@ -13,7 +14,8 @@ export default function ListingCard({
     address,
     city,
     state,
-    price
+    price,
+    main_image_url
 
 }) {
 
@@ -21,7 +23,7 @@ export default function ListingCard({
     const capitalTitle = title.charAt(0).toUpperCase() + title.slice(1);
   
     return (
-    <Card sx={{ 
+    <Card className="listing-card" sx={{ 
         maxWidth: '0.2vw',
         border: 'none',
         maxHeight: 'Calculate(maxWidth * 0.95)',
@@ -41,7 +43,7 @@ export default function ListingCard({
             {capitalTitle}
           </Typography>
           <Typography variant="body2" fontSize="0.65rem" fontWeight='500' sx={{ color: 'text.secondary' }}>
-            89 kilometers away
+            {Math.floor(Math.random() * 101)} miles away
           </Typography>
           <Typography gutterBottom variant="body2" fontSize="0.65rem" sx={{ color: 'text.secondary' }}>
             Jan 26 – 31

@@ -1,0 +1,11 @@
+.listing-card-section {
+    text-align: center;
+}
+
+.listing-card {
+    display: inline-block;
+    margin: 4vw;
+    text-align: left;
+    max-height: 60vw;
+    min-height: 20vw;
+}
