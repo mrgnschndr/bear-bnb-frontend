@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -7,11 +7,15 @@ import CardActionArea from '@mui/material/CardActionArea';
 
 
 
+export default function ListingCard({
+    key,
+    title,
+    address,
+    city,
+    state,
+    price
 
-
-export default function ListingCard() {
-  
-const listing = true;
+}) {
   
   
     return (
@@ -31,10 +35,9 @@ const listing = true;
           }}
         />
         <CardContent>
-          { listing && <Typography variant="h5" component="div" fontSize="0.65rem" fontWeight="bold">
-            {/* `${listingCity},${listingState}` */}
-            Listing City, State
-          </Typography>}
+          <Typography variant="h5" component="div" fontSize="0.65rem" fontWeight="bold">
+            {title}
+          </Typography>
           <Typography variant="body2" fontSize="0.65rem" fontWeight='500' sx={{ color: 'text.secondary' }}>
             89 kilometers away
           </Typography>
@@ -45,7 +48,7 @@ const listing = true;
             color: 'black',
             fontWeight: 'bold',
              }}>
-            $176 night
+            ${price} per night
           </Typography>
         </CardContent>
       </CardActionArea>
