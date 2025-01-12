@@ -7,7 +7,7 @@ export const ListingContext = createContext();
 // Define the Listing Provider component to manage the listing fetching and login simulation logic
 export function ListingProvider({ children }) {
   // State variable to hold the list of listings // Jess has this as null in her video
-  const [listingArray, setListingArray] = useState([]);
+  const [listingArray, setListingArray] = useState("");
   // State variable to track the loading state (for example, during data fetching)
   const [loading, setLoading] = useState(true);
 
