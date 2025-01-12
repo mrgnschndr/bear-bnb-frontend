@@ -15,12 +15,10 @@ export default function ListingCard({
     city,
     state,
     price,
-    main_image_url
-
+    mainImageURL
 }) {
 
     const roundPrice = (price.split("."))[0];
-    const capitalTitle = title.charAt(0).toUpperCase() + title.slice(1);
   
     return (
     <Card className="listing-card" sx={{ 
@@ -32,7 +30,7 @@ export default function ListingCard({
         <CardMedia
           component="img"
           height="140"
-          image="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTIyNDQwMTA4MDMyMzk3NjYwOQ%3D%3D/original/ab966ef2-5920-405d-b96f-f06a564fe073.jpeg?im_w=720&im_format=avif"
+          image={mainImageURL}
           alt="Available Bearbnb rental listing"
           sx={{
             borderRadius: '8px',
@@ -40,7 +38,7 @@ export default function ListingCard({
         />
         <CardContent>
           <Typography variant="h5" component="div" fontSize="0.65rem" fontWeight="bold">
-            {capitalTitle}
+            {city}, {state}
           </Typography>
           <Typography variant="body2" fontSize="0.65rem" fontWeight='500' sx={{ color: 'text.secondary' }}>
             {Math.floor(Math.random() * 101)} miles away
