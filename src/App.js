@@ -6,6 +6,7 @@ import PersonalInfo from './pages/personal-info.js'
 import Home from './pages/home';
 import Footer from './Components/Footer';
 import Nav from './Components/Nav';
+import Listing from './pages/listing';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/personal-info" element={<PersonalInfo />} />
-          <Route path="/listings" element={<Home />} />
+          <Route path="/listing/:listingId" element={<Listing />} />
         </Routes>
       <Footer />
       </Router>
