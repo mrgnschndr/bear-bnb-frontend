@@ -3,6 +3,7 @@
 // We may need to update the state on this to use usecontext depending on how user logins are handled // needed - Andy
 
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { Button, Menu, MenuItem } from '@mui/material';
 import { AccountCircle } from '@mui/icons-material';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -26,6 +27,14 @@ export default function UserNav() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  // Event handler for going to account page
+  let navigate = useNavigate();
+  const navAccount = () => {
+    let path = '/personal-info';
+    navigate(path);
+    handleClose();
+  }
 
   return (
     <div>
@@ -74,9 +83,13 @@ export default function UserNav() {
         {/* Conditional rendering without Fragments */}
         {loggedInUser
           ? [
+              <>
               <MenuItem key="welcome" onClick={handleClose}>
                 Welcome, {loggedInUser.user_first_name}
               </MenuItem>,
+              <MenuItem key="account" onClick={navAccount}>
+                Account
+              </MenuItem>
               <MenuItem
                 key="logout"
                 onClick={() => {
@@ -86,6 +99,7 @@ export default function UserNav() {
               >
                 Logout
               </MenuItem>,
+              </>
             ]
           : [
               <MenuItem key="login" onClick={handleClose}>
