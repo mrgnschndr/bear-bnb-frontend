@@ -23,10 +23,16 @@ export default function ListingCard({
     const roundPrice = (price.split("."))[0];
     
     let navigate = useNavigate(); 
-    const routeChange = async () => { 
-      let path = `/listing/${listingId}`; 
-      navigate(path);
-    }
+    const routeChange = () => { 
+      if (listingId) {
+          let path = `/listing/${listingId}`;
+          navigate(path);
+      } else {
+          console.error("Invalid listing ID");
+      }
+  };  
+
+    
   
     return (
     <>
