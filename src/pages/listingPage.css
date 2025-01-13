@@ -1,0 +1,42 @@
+.listing-container {
+    width: 60%;
+    justify-self: center;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 500;
+}
+
+.img-gallery-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 8px;
+    align-items: stretch; 
+    border-radius: 8px; 
+    overflow: hidden;
+}
+
+.main-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.child-image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr 1fr;
+    gap: 8px; 
+}
+
+.child-image-grid img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+  }
+
+.img-gallery-container img:hover {
+    filter: brightness(95%);
+  }
