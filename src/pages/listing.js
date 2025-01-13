@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import './listingPage.css'
 
 export default function Listing() {
     const { listingId } = useParams();
@@ -29,12 +30,12 @@ export default function Listing() {
 
     // Render the listing details or error message
     return (
-        <div>
-            <h1>Listing Details</h1>
+        <div className="listing-container">
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {listing ? (
                 <div>
-                    <h2>{listing.listing_title}</h2>
+                    <h1>{listing.listing_title}</h1>
+                    <h2>{listing.guest_access} in {listing.listing_city}</h2>
                     <p><strong>Address:</strong> {listing.listing_address}</p>
                     <p><strong>City:</strong> {listing.listing_city}, {listing.listing_state}</p>
                     <p><strong>Price per Night:</strong> {listing.price_per_night}</p>
