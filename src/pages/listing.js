@@ -35,12 +35,23 @@ export default function Listing() {
             {listing ? (
                 <div>
                     <h1>{listing.listing_title}</h1>
+                    <div className="img-gallery-container">
+                        <img className="main-img" src='https://placehold.co/400x400'/>
+                        <div className="child-image-grid">
+                            <img src='https://placehold.co/400x400'/>
+                            <img  src='https://placehold.co/400x400'/>
+                            <img  src='https://placehold.co/400x400'/>
+                            <img  src='https://placehold.co/400x400'/>
+                        </div>
+                        {/* src={listing.list_image_url[1]} */}
+                    </div>
                     <h2>{listing.guest_access} in {listing.listing_city}</h2>
-                    <p><strong>Address:</strong> {listing.listing_address}</p>
+                    <p>{listing.listing_max_guest} guests · {listing.listing_bedrooms} bedrooms · {listing.num_beds} beds · {listing.listing_baths} baths</p>
+                    {/* <p><strong>Address:</strong> {listing.listing_address}</p>
                     <p><strong>City:</strong> {listing.listing_city}, {listing.listing_state}</p>
                     <p><strong>Price per Night:</strong> {listing.price_per_night}</p>
                     <p><strong>Description:</strong> {listing.space_description}</p>
-                    <p><strong>Rating:</strong> {listing.full_rating}/5</p>
+                    <p><strong>Rating:</strong> {listing.full_rating}/5</p> */}
                 </div>
             ) : (
                 !error && <p>Loading listing details...</p>
