@@ -34,7 +34,7 @@ export default function Listing() {
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {listing ? (
                 <div>
-                    <h1>{listing.listing_title}</h1>
+                    <h1>{(listing.listing_title).charAt(0).toUpperCase() + (listing.listing_title).slice(1)}</h1>
                     <div className="img-gallery-container">
                         <img className="main-img" src='https://placehold.co/400x400'/>
                         <div className="child-image-grid">
