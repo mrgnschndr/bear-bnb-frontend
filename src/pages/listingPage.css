@@ -9,28 +9,32 @@ h1, h2, h3, h4 {
 
 .img-gallery-container {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Divide into 2 equal fractions */
-    gap: 5px; /* Space between the elements */
-    align-items: stretch; /* Stretch items to fill their grid cells */
+    grid-template-columns: 1fr 1fr; 
+    gap: 5px;
+    align-items: stretch; 
+    border-radius: 8px; 
+    overflow: hidden;
 }
 
 .main-img {
     width: 100%;
     height: auto;
     object-fit: cover;
-    border-radius: 8px; /* Optional rounded corners */
 }
 
 .child-image-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2x2 grid for smaller images */
+    grid-template-columns: 1fr 1fr; 
     grid-template-rows: 1fr 1fr;
-    gap: 5px; /* Space between images */
+    gap: 5px; 
 }
 
 .child-image-grid img {
     width: 100%;
     height: auto;
-    object-fit: cover; /* Ensures images scale properly */
-    border-radius: 8px; /* Optional rounded corners */
+    object-fit: cover;
+  }
+
+.img-gallery-container img:hover {
+    filter: brightness(95%);
   }
