@@ -1,59 +1,50 @@
-import React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import CardActionArea from '@mui/material/CardActionArea';
-import '../pages/home.css';
-
-
+import React from "react";
+import StarIcon from "@mui/icons-material/Star";
+import "./ListingCard.css";
 
 export default function ListingCard({
-    key,
-    title,
-    address,
-    city,
-    state,
-    price,
-    mainImageURL
+  title,
+  city,
+  state,
+  price,
+  mainImageURL,
+  rating,
 }) {
+  const roundPrice = price.split(".")[0];
 
-    const roundPrice = (price.split("."))[0];
-  
-    return (
-    <Card className="listing-card" sx={{ 
-        maxWidth: '0.2vw',
-        border: 'none',
-        maxHeight: 'Calculate(maxWidth * 0.95)',
-         }}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image={mainImageURL}
-          alt="Available Bearbnb rental listing"
-          sx={{
-            borderRadius: '8px',
-          }}
+  return (
+    <div className="listing-card">
+      <div className="listing-card__image-container">
+        <img 
+          className="listing-card__image" 
+          src={mainImageURL} 
+          alt={title} 
         />
-        <CardContent>
-          <Typography variant="h5" component="div" fontSize="0.65rem" fontWeight="bold">
+      </div>
+      
+      <div className="listing-card__content">
+        <div className="listing-card__header">
+          <div className="listing-card__location">
             {city}, {state}
-          </Typography>
-          <Typography variant="body2" fontSize="0.65rem" fontWeight='500' sx={{ color: 'text.secondary' }}>
-            {Math.floor(Math.random() * 101)} miles away
-          </Typography>
-          <Typography gutterBottom variant="body2" fontSize="0.65rem" sx={{ color: 'text.secondary' }}>
-            Jan 26 – 31
-          </Typography>
-          <Typography variant="body2" fontSize="0.65rem" sx={{ 
-            color: 'black',
-            fontWeight: 'bold',
-             }}>
-            {roundPrice} per night
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
+          </div>
+          <div className="listing-card__rating">
+            <StarIcon className="listing-card__rating-icon" />
+            <span>{rating}</span>
+          </div>
+        </div>
+
+        <div className="listing-card__info">
+          {Math.floor(Math.random() * 101)} miles away
+        </div>
+        <div className="listing-card__info">
+          Jan 26 – 31
+        </div>
+
+        <div className="listing-card__price">
+          <span className="listing-card__price-amount">{roundPrice}</span>
+          <span className="listing-card__price-text"> night</span>
+        </div>
+      </div>
+    </div>
   );
 }
