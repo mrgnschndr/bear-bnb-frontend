@@ -36,12 +36,12 @@ export default function Listing() {
                 <div>
                     <h1>{(listing.listing_title).charAt(0).toUpperCase() + (listing.listing_title).slice(1)}</h1>
                     <div className="img-gallery-container">
-                        <img className="main-img" src='https://placehold.co/400x400'/>
+                    <img className="main-img" src={listing.main_image_url}/>
                         <div className="child-image-grid">
-                            <img src='https://placehold.co/400x400'/>
-                            <img  src='https://placehold.co/400x400'/>
-                            <img  src='https://placehold.co/400x400'/>
-                            <img  src='https://placehold.co/400x400'/>
+                            <img src={listing.list_image_url[1]}/>
+                            <img  src={listing.list_image_url[2]}/>
+                            <img  src={listing.list_image_url[3]}/>
+                            <img  src={listing.list_image_url[4]}/>
                         </div>
                         {/* src={listing.list_image_url[1]} */}
                     </div>
