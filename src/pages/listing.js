@@ -28,6 +28,7 @@ export default function Listing() {
         fetchListing();
     }, [listingId]);
 
+
     // Render the listing details or error message
     return (
         <div className="listing-container">
@@ -47,6 +48,13 @@ export default function Listing() {
                     </div>
                     <h2>{listing.guest_access} in {listing.listing_city}</h2>
                     <p>{listing.listing_max_guest} guests · {listing.listing_bedrooms} bedrooms · {listing.num_beds} beds · {listing.listing_baths} baths</p>
+                    <div className="host-section">
+                        <img className="host-img" src={listing.user_image_url}/>
+                        <h3 className="hosted-by">Hosted by {listing.user_first_name}</h3>
+                        <p className="superhost-years">{listing.is_superhost ? 
+                            `Superhost • ${Number(new Date().getFullYear()) - Number((listing.date_hosted).slice(0, 4))} years hosting` 
+                            : `${Number(new Date().getFullYear()) - Number((listing.date_hosted).slice(0, 4))} years hosting`}</p>
+                    </div>
                     {/* <p><strong>Address:</strong> {listing.listing_address}</p>
                     <p><strong>City:</strong> {listing.listing_city}, {listing.listing_state}</p>
                     <p><strong>Price per Night:</strong> {listing.price_per_night}</p>
