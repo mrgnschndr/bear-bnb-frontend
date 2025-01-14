@@ -68,7 +68,8 @@ export default function Listing() {
             ) : (
                 !error && <p>Loading listing details...</p>
             )}
-            <ReserveCard />
+            <ReserveCard 
+            />
         </div>
     );
 }
