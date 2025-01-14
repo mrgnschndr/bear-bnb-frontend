@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './listingPage.css'
 import { SpaceBar } from '@mui/icons-material';
+import ReserveCard from '../Components/ReserveCard';
 
 export default function Listing() {
     const { listingId } = useParams();
@@ -53,8 +54,8 @@ export default function Listing() {
                         <img className="host-img" src={listing.user_image_url}/>
                         <h3 className="hosted-by">Hosted by {listing.user_first_name}</h3>
                         <p className="superhost-years">{listing.is_superhost ? 
-                            `Superhost • ${Number(new Date().getFullYear()) - Number((listing.date_hosted).slice(0, 4))} years hosting` 
-                            : `${Number(new Date().getFullYear()) - Number((listing.date_hosted).slice(0, 4))} years hosting`}</p>
+                            `Superhost • ${Number(new Date().getFullYear()) - Number((listing.date_hosted).slice(0, 4))} year(s) hosting` 
+                            : `${Number(new Date().getFullYear()) - Number((listing.date_hosted).slice(0, 4))} year(s) hosting`}</p>
                     </div>
                     <hr></hr>
                     <p>{listing.space_description}</p>
@@ -67,6 +68,8 @@ export default function Listing() {
             ) : (
                 !error && <p>Loading listing details...</p>
             )}
+            <ReserveCard 
+            />
         </div>
     );
 }
