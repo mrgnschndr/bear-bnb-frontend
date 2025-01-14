@@ -2,8 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './listingPage.css'
+
+import StarIcon from '@mui/icons-material/Star';
+import Stack from '@mui/material/Stack';
+import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
+import Rating from '@mui/material/Rating';
+
 import { SpaceBar } from '@mui/icons-material';
 import ReserveCard from '../Components/ReserveCard';
+
 
 export default function Listing() {
     const { listingId } = useParams();
@@ -50,6 +57,35 @@ export default function Listing() {
                     </div>
                     <h2>{listing.guest_access} in {listing.listing_city}</h2>
                     <p>{listing.listing_max_guest} guests · {listing.listing_bedrooms} bedrooms · {listing.num_beds} beds · {listing.listing_baths} baths</p>
+
+                    {(listing.full_rating >= 4 && listing.number_reviews > 200) ? (
+                    <div className="guest-favorite-panel">
+                        <div className="block1">
+                            <div className="trophy-block">
+                                <EmojiEventsOutlinedIcon />
+                                <h3>Guest Favorite</h3>
+                                <EmojiEventsOutlinedIcon />
+                            </div>
+                        </div>
+                        <div className="text-block">
+                            <h4>One of the most loved homes on BearBnB, according to guests.</h4>
+                        </div>
+                        <div className="rating-block">
+                            <h3>{listing.full_rating}</h3>
+                            <Rating readOnly size="small" name="half-rating" color='#000000' defaultValue={listing.full_rating} precision={0.5}/>
+                        </div>
+                        <div className="review-block">
+                            <h3>{listing.number_reviews} Reviews</h3>
+                        </div>
+                    </div>
+                    ) : (
+                        <Stack alignItems="center" direction="row" gap={0.5}>
+                            <StarIcon sx={{ fontSize: 25}}/>
+                            <h4><strong>{listing.full_rating}</strong> · {listing.number_reviews} Reviews</h4>
+                        </Stack>
+                    )}
+                    </div>
+
                     <div className="host-section">
                         <img className="host-img" src={listing.user_image_url}/>
                         <h3 className="hosted-by">Hosted by {listing.user_first_name}</h3>
@@ -65,6 +101,7 @@ export default function Listing() {
                     <p><strong>Description:</strong> {listing.space_description}</p>
                     <p><strong>Rating:</strong> {listing.full_rating}/5</p> */}
                 </div>
+
             ) : (
                 !error && <p>Loading listing details...</p>
             )}
