@@ -4,6 +4,8 @@ import axios from 'axios';
 import './listingPage.css'
 import StarIcon from '@mui/icons-material/Star';
 import Stack from '@mui/material/Stack';
+import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
+import Rating from '@mui/material/Rating';
 
 export default function Listing() {
     const { listingId } = useParams();
@@ -49,13 +51,31 @@ export default function Listing() {
                     </div>
                     <h2>{listing.guest_access} in {listing.listing_city}</h2>
                     <p>{listing.listing_max_guest} guests · {listing.listing_bedrooms} bedrooms · {listing.num_beds} beds · {listing.listing_baths} baths</p>
-                    {(listing.full_rating > 4 && listing.number_reviews > 200) ? (
-                    <div>Guest Favorite</div>
+                    {(listing.full_rating >= 4 && listing.number_reviews > 200) ? (
+                    <div className="guest-favorite-panel">
+                        <div className="block1">
+                            <div className="trophy-block">
+                                <EmojiEventsOutlinedIcon />
+                                <div><h4>Guest</h4><h4>Favorite</h4></div>
+                                <EmojiEventsOutlinedIcon />
+                            </div>
+                        </div>
+                        <div>
+                            <h3>One of the most loved homes on BearBnB, according to guests.</h3>
+                        </div>
+                        <div>
+                            <h4><strong>{listing.full_rating}</strong></h4>
+                            <Rating readOnly name="half-rating" color='#000000' defaultValue={listing.full_rating} precision={0.5} />
+                        </div>
+                        <div>
+                            <h3>{listing.number_reviews} Reviews</h3>
+                        </div>
+                    </div>
                     ) : (
                         <Stack alignItems="center" direction="row" gap={0.5}>
                             <StarIcon sx={{ fontSize: 25}}/>
                             <h3><strong>{listing.full_rating}</strong> · {listing.number_reviews} Reviews</h3>
-                      </Stack>
+                        </Stack>
                     )}
                     </div>
             ) : (
