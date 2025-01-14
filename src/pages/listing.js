@@ -2,10 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './listingPage.css'
+
 import StarIcon from '@mui/icons-material/Star';
 import Stack from '@mui/material/Stack';
 import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
 import Rating from '@mui/material/Rating';
+
+import { SpaceBar } from '@mui/icons-material';
+import ReserveCard from '../Components/ReserveCard';
+
 
 export default function Listing() {
     const { listingId } = useParams();
@@ -32,6 +37,7 @@ export default function Listing() {
         fetchListing();
     }, [listingId]);
 
+
     // Render the listing details or error message
     return (
         <div className="listing-container">
@@ -51,6 +57,7 @@ export default function Listing() {
                     </div>
                     <h2>{listing.guest_access} in {listing.listing_city}</h2>
                     <p>{listing.listing_max_guest} guests · {listing.listing_bedrooms} bedrooms · {listing.num_beds} beds · {listing.listing_baths} baths</p>
+
                     {(listing.full_rating >= 4 && listing.number_reviews > 200) ? (
                     <div className="guest-favorite-panel">
                         <div className="block1">
@@ -78,9 +85,28 @@ export default function Listing() {
                         </Stack>
                     )}
                     </div>
+
+                    <div className="host-section">
+                        <img className="host-img" src={listing.user_image_url}/>
+                        <h3 className="hosted-by">Hosted by {listing.user_first_name}</h3>
+                        <p className="superhost-years">{listing.is_superhost ? 
+                            `Superhost • ${Number(new Date().getFullYear()) - Number((listing.date_hosted).slice(0, 4))} year(s) hosting` 
+                            : `${Number(new Date().getFullYear()) - Number((listing.date_hosted).slice(0, 4))} year(s) hosting`}</p>
+                    </div>
+                    <hr></hr>
+                    <p>{listing.space_description}</p>
+                    {/* <p><strong>Address:</strong> {listing.listing_address}</p>
+                    <p><strong>City:</strong> {listing.listing_city}, {listing.listing_state}</p>
+                    <p><strong>Price per Night:</strong> {listing.price_per_night}</p>
+                    <p><strong>Description:</strong> {listing.space_description}</p>
+                    <p><strong>Rating:</strong> {listing.full_rating}/5</p> */}
+                </div>
+
             ) : (
                 !error && <p>Loading listing details...</p>
             )}
+            <ReserveCard 
+            />
         </div>
     );
 }
