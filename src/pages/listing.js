@@ -56,25 +56,25 @@ export default function Listing() {
                         <div className="block1">
                             <div className="trophy-block">
                                 <EmojiEventsOutlinedIcon />
-                                <div><h4>Guest</h4><h4>Favorite</h4></div>
+                                <h3>Guest Favorite</h3>
                                 <EmojiEventsOutlinedIcon />
                             </div>
                         </div>
-                        <div>
-                            <h3>One of the most loved homes on BearBnB, according to guests.</h3>
+                        <div className="text-block">
+                            <h4>One of the most loved homes on BearBnB, according to guests.</h4>
                         </div>
-                        <div>
-                            <h4><strong>{listing.full_rating}</strong></h4>
-                            <Rating readOnly name="half-rating" color='#000000' defaultValue={listing.full_rating} precision={0.5} />
+                        <div className="rating-block">
+                            <h3>{listing.full_rating}</h3>
+                            <Rating readOnly size="small" name="half-rating" color='#000000' defaultValue={listing.full_rating} precision={0.5}/>
                         </div>
-                        <div>
+                        <div className="review-block">
                             <h3>{listing.number_reviews} Reviews</h3>
                         </div>
                     </div>
                     ) : (
                         <Stack alignItems="center" direction="row" gap={0.5}>
                             <StarIcon sx={{ fontSize: 25}}/>
-                            <h3><strong>{listing.full_rating}</strong> · {listing.number_reviews} Reviews</h3>
+                            <h4><strong>{listing.full_rating}</strong> · {listing.number_reviews} Reviews</h4>
                         </Stack>
                     )}
                     </div>
