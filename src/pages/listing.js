@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './listingPage.css'
+import { SpaceBar } from '@mui/icons-material';
 
 export default function Listing() {
     const { listingId } = useParams();
@@ -55,6 +56,8 @@ export default function Listing() {
                             `Superhost • ${Number(new Date().getFullYear()) - Number((listing.date_hosted).slice(0, 4))} years hosting` 
                             : `${Number(new Date().getFullYear()) - Number((listing.date_hosted).slice(0, 4))} years hosting`}</p>
                     </div>
+                    <hr></hr>
+                    <p>{listing.space_description}</p>
                     {/* <p><strong>Address:</strong> {listing.listing_address}</p>
                     <p><strong>City:</strong> {listing.listing_city}, {listing.listing_state}</p>
                     <p><strong>Price per Night:</strong> {listing.price_per_night}</p>
