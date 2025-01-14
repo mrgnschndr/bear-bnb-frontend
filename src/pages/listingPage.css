@@ -94,7 +94,8 @@ h1, h2, h3, h4{
 .review-block {
     display: flex;
     justify-items: center;
-    align-items: center;;
+    align-items: center;
+}
 
 .host-section {
     display: grid;

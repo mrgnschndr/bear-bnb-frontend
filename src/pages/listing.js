@@ -84,8 +84,7 @@ export default function Listing() {
                             <h4><strong>{listing.full_rating}</strong> · {listing.number_reviews} Reviews</h4>
                         </Stack>
                     )}
-                    </div>
-
+                    
                     <div className="host-section">
                         <img className="host-img" src={listing.user_image_url}/>
                         <h3 className="hosted-by">Hosted by {listing.user_first_name}</h3>
