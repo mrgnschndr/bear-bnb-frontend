@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './listingPage.css'
+import StarIcon from '@mui/icons-material/Star';
+import Stack from '@mui/material/Stack';
 
 export default function Listing() {
     const { listingId } = useParams();
@@ -47,12 +49,15 @@ export default function Listing() {
                     </div>
                     <h2>{listing.guest_access} in {listing.listing_city}</h2>
                     <p>{listing.listing_max_guest} guests · {listing.listing_bedrooms} bedrooms · {listing.num_beds} beds · {listing.listing_baths} baths</p>
-                    {/* <p><strong>Address:</strong> {listing.listing_address}</p>
-                    <p><strong>City:</strong> {listing.listing_city}, {listing.listing_state}</p>
-                    <p><strong>Price per Night:</strong> {listing.price_per_night}</p>
-                    <p><strong>Description:</strong> {listing.space_description}</p>
-                    <p><strong>Rating:</strong> {listing.full_rating}/5</p> */}
-                </div>
+                    {(listing.full_rating > 4 && listing.number_reviews > 200) ? (
+                    <div>Guest Favorite</div>
+                    ) : (
+                        <Stack alignItems="center" direction="row" gap={0.5}>
+                            <StarIcon sx={{ fontSize: 25}}/>
+                            <h3><strong>{listing.full_rating}</strong> · {listing.number_reviews} Reviews</h3>
+                      </Stack>
+                    )}
+                    </div>
             ) : (
                 !error && <p>Loading listing details...</p>
             )}
