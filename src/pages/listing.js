@@ -49,9 +49,9 @@ export default function Listing() {
                     <h2>{listing.guest_access} in {listing.listing_city}</h2>
                     <p>{listing.listing_max_guest} guests · {listing.listing_bedrooms} bedrooms · {listing.num_beds} beds · {listing.listing_baths} baths</p>
                     <div className="host-section">
-                    <img className="host-img" src={listing.user_image_url}/>
-                        <h2>Hosted by {listing.user_first_name}</h2>
-                        <p>{listing.is_superhost ? 
+                        <img className="host-img" src={listing.user_image_url}/>
+                        <h3 className="hosted-by">Hosted by {listing.user_first_name}</h3>
+                        <p className="superhost-years">{listing.is_superhost ? 
                             `Superhost • ${Number(new Date().getFullYear()) - Number((listing.date_hosted).slice(0, 4))} years hosting` 
                             : `${Number(new Date().getFullYear()) - Number((listing.date_hosted).slice(0, 4))} years hosting`}</p>
                     </div>
