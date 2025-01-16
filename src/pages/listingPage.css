@@ -134,11 +134,41 @@ h1, h2, h3, h4{
 }
 
 hr {
-    margin: 20px;
+    margin: 0px, 20px;
 }
 
 .reserve-btn {
     background-color: #FF3131 !important;
     margin-top: 20px;
 
+}
+.self-check-in {
+    display: flex;
+    margin-top: 15px;
+}
+.extras-block {
+    margin-left: 10px;
+    margin-top: 0px;
+}
+.extras-block h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.extras-block p {
+    color:#6F6A6A;
+}
+.peaceful {
+    display:flex;
+    margin-top: 15px;
+}
+
+.cancel-date {
+    display:flex;
+    margin-top: 15px;
+}
+.cancel-block h3 {
+    margin-left: 10px;
+}
+.space-extras p {
+    margin-top: 0px;
 }
