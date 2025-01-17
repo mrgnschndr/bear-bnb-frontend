@@ -51,7 +51,7 @@ export function ListingProvider({ children }) {
 
 // Custom hook to access listing context in other components
 // export function useListing() {
-//   const context = useContext(listingContext);
+//   const context = useContext(ListingContext);
 
 //   if (context === undefined) {
 //     throw new Error("useListing must be used within a ListingProvider");

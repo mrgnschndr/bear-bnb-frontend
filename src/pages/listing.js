@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './listingPage.css'
+import { ListingContext } from '../context/ListingContext'
 
 import StarIcon from '@mui/icons-material/Star';
 import Stack from '@mui/material/Stack';
@@ -10,6 +11,18 @@ import Rating from '@mui/material/Rating';
 import DoorFrontOutlinedIcon from '@mui/icons-material/DoorFrontOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
 import DateRangeOutlinedIcon from '@mui/icons-material/DateRangeOutlined';
+import WifiOutlinedIcon from '@mui/icons-material/WifiOutlined';
+import KitchenOutlinedIcon from '@mui/icons-material/KitchenOutlined';
+import LocalLaundryServiceOutlinedIcon from '@mui/icons-material/LocalLaundryServiceOutlined';
+import AcUnitOutlinedIcon from '@mui/icons-material/AcUnitOutlined';
+import LocalFireDepartmentOutlinedIcon from '@mui/icons-material/LocalFireDepartmentOutlined';
+import PoolOutlinedIcon from '@mui/icons-material/PoolOutlined';
+import LocalParkingOutlinedIcon from '@mui/icons-material/LocalParkingOutlined';
+import FitnessCenterOutlinedIcon from '@mui/icons-material/FitnessCenterOutlined';
+import CoffeeMakerOutlinedIcon from '@mui/icons-material/CoffeeMakerOutlined';
+import BreakfastDiningOutlinedIcon from '@mui/icons-material/BreakfastDiningOutlined';
+
+
 
 import { SpaceBar } from '@mui/icons-material';
 import ReserveCard from '../Components/ReserveCard';
@@ -39,6 +52,7 @@ export default function Listing() {
     useEffect(() => {
         fetchListing();
     }, [listingId]);
+
 
 // Date variables for cancellation date 14 days from current date
     // variable for current date
@@ -136,18 +150,86 @@ export default function Listing() {
                         <hr></hr>
                     </div>
                     <p>{listing.space_description}</p>
+                    <hr></hr>
+                    {/* <h2>{listing.price_per_night} night</h2> */}
                     {/* <p><strong>Address:</strong> {listing.listing_address}</p>
                     <p><strong>City:</strong> {listing.listing_city}, {listing.listing_state}</p>
                     <p><strong>Price per Night:</strong> {listing.price_per_night}</p>
                     <p><strong>Description:</strong> {listing.space_description}</p>
                     <p><strong>Rating:</strong> {listing.full_rating}/5</p> */}
-                </div>
-
+                    <div className="amenities-block">
+                    <h2>What this place offers</h2>
+                    {(listing.wifi === true) ? (
+                            <div className="amen-block">
+                                <WifiOutlinedIcon /> 
+                                <p>Wifi</p>
+                                </div>
+                            ) : (null)}
+                            
+                    {(listing.kitchen === true) ? (
+                            <div className="amen-block">
+                                <KitchenOutlinedIcon /> 
+                                <p>Full Kitchen</p>
+                                </div>
+                            ) : (null)}
+                    {(listing.laundry === true) ? (
+                            <div className="amen-block">
+                                <LocalLaundryServiceOutlinedIcon /> 
+                                <p>Laundry</p>
+                                </div>
+                            ) : (null)}
+                    {(listing.air_conditioning === true) ? (
+                            <div className="amen-block">
+                                <AcUnitOutlinedIcon /> 
+                                <p>Air Conditioning</p>
+                                </div>
+                            ) : (null)}
+                    {(listing.heating === true) ? (
+                            <div className="amen-block">
+                                <LocalFireDepartmentOutlinedIcon /> 
+                                <p>Heating</p>
+                                </div>
+                            ) : (null)}
+                    {(listing.pool === true) ? (
+                            <div className="amen-block">
+                                <PoolOutlinedIcon /> 
+                                <p>Pool</p>
+                                </div>
+                            ) : (null)}
+                    {(listing.free_parking === true) ? (
+                            <div className="amen-block">
+                                <LocalParkingOutlinedIcon /> 
+                                <p>Free Parking</p>
+                                </div>
+                            ) : (null)}
+                    {(listing.gym === true) ? (
+                            <div className="amen-block">
+                                <FitnessCenterOutlinedIcon /> 
+                                <p>Gym</p>
+                                </div>
+                            ) : (null)}
+                    {(listing.coffee_maker === true) ? (
+                            <div className="amen-block">
+                                <CoffeeMakerOutlinedIcon /> 
+                                <p>Coffee Maker</p>
+                                </div>
+                            ) : (null)}
+                    {(listing.free_breakfast === true) ? (
+                            <div className="amen-block">
+                                <BreakfastDiningOutlinedIcon /> 
+                                <p>Free Breakfast</p>
+                                </div>
+                            ) : (null)}
+                    </div>
+                    <hr></hr>
+                    </div>
+         
             ) : (
                 !error && <p>Loading listing details...</p>
             )}
-            <ReserveCard 
-            />
+            <ReserveCard
+                
+                />
         </div>
     );
 }
