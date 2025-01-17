@@ -172,3 +172,10 @@ hr {
 .space-extras p {
     margin-top: 0px;
 }
+.amen-block {
+    display: flex;
+    align-items: center;
+}
+.amen-block p {
+    margin: 10px;
+}
