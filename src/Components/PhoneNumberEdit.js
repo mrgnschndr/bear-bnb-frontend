@@ -79,10 +79,16 @@ export default function PhoneNumberEdit({
         const response = await axios.put(`http://localhost:5004/api/users/${loggedInUser.user_id}`, {
           user_phone: phoneNumber
         });
-
+        // console.log(response.status);
+        console.log(response.data.data.user_phone);
+        console.log(response);
+        console.log("logged", loggedInUser.user_phone);
         // If valid: save the number and close edit menu
-        onSave(phoneNumber);
         toggleEditMenu();
+        if (response.status == 200) {
+          loggedInUser.user_phone = phoneNumber;
+          
+        }
 
       } catch (error) {
         setError(error.response?.data?.message || "Failed to update Phone Info")

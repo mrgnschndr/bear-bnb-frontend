@@ -35,11 +35,12 @@ export default function LegalNameEdit({
                 user_first_name: firstName,
                 user_last_name: lastName
             });
-
-            onSave(firstName && lastName);
-
+            if (res.status == 200) {
+            loggedInUser.user_first_name = firstName;
+            loggedInUser.user_last_name = lastName;
             toggleEditMenu();
-            console.log(res);
+            }
+            console.log("check", res);
         
         } catch (error) {
             setError(error.response?.data?.message || "Failed to update Legal Name")

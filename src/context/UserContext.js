@@ -2,7 +2,7 @@ import React, { createContext, useState, useContext, useEffect } from "react";
 import axios from "axios";
 
 // Create a context for user-related data
-const UserContext = createContext();
+export const UserContext = createContext();
 
 // Define the UserProvider component to manage the user fetching and login simulation logic
 export function UserProvider({ children }) {
