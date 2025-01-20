@@ -52,7 +52,15 @@ export default function AddressEdit({
                 address.country &&
                 address.postalCode
             );
-
+            if (res.status == 200) {
+                loggedInUser.user_address_one = address.lineOne;
+                loggedInUser.user_apt = address.aptsuite;
+                loggedInUser.user_city = address.city;
+                loggedInUser.user_state = address.state;
+                loggedInUser.user_country = address.country;
+                loggedInUser.user_postalCode = address.postalCode;
+                
+              }
             toggleEditMenu();
             console.log(res)
 

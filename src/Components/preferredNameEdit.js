@@ -17,7 +17,7 @@ export default function PreferredNameEdit({
     const [nickName, setNickName] = useState("");
 
     // Initialize state for error message
-    const [error, setError] = useState("");
+    const [error, setError] = useState(initialNickName ||"");
 
     // Initialize loading state
     const [isLoading, setIsLoading] = useState("");
@@ -31,7 +31,9 @@ export default function PreferredNameEdit({
                 user_nickname: nickName
             });
 
-            onSave(nickName);
+            if (res.status == 200) {
+                loggedInUser.user_nickname = nickName;
+              }
 
             toggleEditMenu();
             console.log(res);

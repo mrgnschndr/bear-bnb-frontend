@@ -32,7 +32,10 @@ export default function EmailAddressEdit({
                 user_email: emailAddress
             });
 
-            onSave(emailAddress);
+            if (res.status == 200) {
+                loggedInUser.user_email = emailAddress;
+                
+              }
 
             toggleEditMenu();
             console.log(res);

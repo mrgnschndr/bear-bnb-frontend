@@ -43,12 +43,12 @@ export default function EmergencyContactEdit({
                 user_econtact_phone: emergencyContact.phone
             });
 
-            onSave(
-                emergencyContact.name &&
-                emergencyContact.relationship &&
-                emergencyContact.email &&
-                emergencyContact.phone
-            );
+            if (res.status == 200) {
+                loggedInUser.user_econtact_name = emergencyContact.name;
+                loggedInUser.user_econtact_relationship = emergencyContact.relationship;
+                loggedInUser.user_econtact_email = emergencyContact.email;
+                loggedInUser.user_econtact_phone = emergencyContact.phone;
+              }
 
             toggleEditMenu();
             console.log(res);
