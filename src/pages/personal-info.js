@@ -74,14 +74,7 @@ export default function PersonalInfo() {
   });
 
     // State declaration for full address
-    const [address, setAddress] = useState({
-      lineOne: "",
-      aptsuite: "",
-      city: "",
-      state: "",
-      country: "",
-      postalCode: "",
-    });
+    const [address, setAddress] = useState("");
 
   // State declaration for email address
   const [emailAddress, setEmailAddress] = useState("");
@@ -190,13 +183,13 @@ export default function PersonalInfo() {
         <Address
         toggleEditMenu={() => toggleEditMenu
           ("address")}
+        address={address}
         />
       ) : (
         <AddressEdit
           toggleEditMenu={() => toggleEditMenu ("address")} 
           onSave={setAddress}
           initialAddress={address}
-          
           /> )}
 
 
