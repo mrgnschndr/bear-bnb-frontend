@@ -89,7 +89,7 @@ export default function PhoneNumberEdit({
       } finally {
         setIsLoading(false);
       }
-    }else {
+    } else {
       setError("Please enter a valid phone number");
     }
   };

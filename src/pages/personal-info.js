@@ -118,7 +118,9 @@ export default function PersonalInfo() {
       {!editStates.legalName ? (
         // View mode - show LegalName component
         <LegalName
-          toggleEditMenu={() => toggleEditMenu("legalName")} // Pass toggle function
+        firstName={firstName}
+        lastName={lastName}
+        toggleEditMenu={() => toggleEditMenu("legalName")} // Pass toggle function
         />
       ) : (
         // Edit mode - show LegalNameEdit component
@@ -126,9 +128,9 @@ export default function PersonalInfo() {
           toggleEditMenu={() => toggleEditMenu("legalName")} // Pass toggle function
           initialFirstName={firstName} // Pass current legal name as starting value
           initialLastName={lastName}
-          onSave={() => {
-            setFirstName();
-            setLastName();
+          onSave={(x , y) => {
+            setFirstName(x);
+            setLastName(y);
           }} // Pass function to update first and last name
         />
       )}
@@ -171,6 +173,7 @@ export default function PersonalInfo() {
         // View mode - show PhoneNumber component
         <EmailAddress
           toggleEditMenu={() => toggleEditMenu("emailAddress")} // Pass toggle function
+          emailAddress={emailAddress}
           />
         ) : (
           // Edit mode - show Email Address component
