@@ -199,6 +199,7 @@ export default function PersonalInfo() {
         // View mode - show PhoneNumber component
         <EmergencyContact
           toggleEditMenu={() => toggleEditMenu("emergencyContact")} // Pass toggle function
+          emergencyContact={emergencyContact}
         />
       ) : (
         // Edit mode - show Email Address component

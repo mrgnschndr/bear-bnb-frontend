@@ -44,10 +44,10 @@ export default function EmergencyContactEdit({
             });
 
             onSave(
-                emergencyContact.name &&
-                emergencyContact.relationship &&
-                emergencyContact.email &&
-                emergencyContact.phone
+                `${emergencyContact.name}
+                ${emergencyContact.relationship}
+                ${emergencyContact.email}
+                ${emergencyContact.phone}`
             );
 
             toggleEditMenu();
