@@ -18,10 +18,8 @@ export default function PhoneNumber({ phoneNumber, toggleEditMenu }) {
       <div>
         <h3>Phone Number</h3>
         <p>
-          {/* Conditionally render the user's full name or a fallback */}
-          {loggedInUser
-            ? `${loggedInUser.user_phone}`
-            : "Not Provided"}
+          {/* Display phone number state first, fallback to loggedInUser */}
+          {phoneNumber || loggedInUser?.user_phone || "Not Provided"}
         </p>
       </div>
       <button onClick={toggleEditMenu}>Edit</button>
