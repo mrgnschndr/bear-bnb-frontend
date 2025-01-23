@@ -2,6 +2,7 @@ import React from 'react';
 import Logo from './Logo';  // Import the Logo component
 import UserNav from './userNav';  // Import the UserNav component
 import './Nav.css';  // Import the CSS file for styles
+import { LoginButton } from './LoginButton';
 
 // Define the Nav component
 export default function Nav() {
@@ -11,6 +12,7 @@ export default function Nav() {
       <Logo />
       {/* Render the UserNav component */}
       <UserNav />
+      <LoginButton />
     </div>
   );
 }

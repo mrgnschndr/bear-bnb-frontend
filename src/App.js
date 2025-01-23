@@ -7,21 +7,33 @@ import Home from './pages/home';
 import Footer from './Components/Footer';
 import Nav from './Components/Nav';
 import Listing from './pages/listing';
+import { Auth0Provider } from '@auth0/auth0-react';
 
 function App() {
+  const domain = process.env.REACT_APP_AUTH0_DOMAIN;
+  const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
+  const origin = window.location.origin;
+
   return (
-    <>
+    <Auth0Provider
+      domain={domain}
+      clientId={clientId}
+      authorizationParams={{
+        redirect_uri: origin,
+        scope: "openid profile email"
+      }}
+    >
       <Router> 
-      <Nav />
+        <Nav />
         <Routes>
           <Route index element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/personal-info" element={<PersonalInfo />} />
           <Route path="/listing/:listingId" element={<Listing />} />
         </Routes>
-      <Footer />
+        <Footer />
       </Router>
-    </>
+    </Auth0Provider>
   );
 }
 
