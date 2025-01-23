@@ -1,15 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import React from 'react';
 
 export function LoginButton() {
-  const {
-    isAuthenticated,
-    loginWithRedirect,
-    logout,
-    user,
-    isLoading,
-    error
-  } = useAuth0();
+  const { loginWithRedirect, isAuthenticated, logout, user, error, isLoading } = useAuth0();
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -17,22 +9,18 @@ export function LoginButton() {
 
   if (error) {
     console.error('Auth0 Error:', error);
-    return null; // Don't show error to user, just log it
+    return <div>Authentication Error</div>;
   }
 
   if (isAuthenticated) {
     return (
       <div>
-        <span>Welcome, {user.name}</span>
-        <button
-          onClick={() => 
-            logout({
-              logoutParams: {
-                returnTo: window.location.origin,
-              }
-            })
+        <p>Welcome, {user.name}!</p>
+        <button onClick={() => logout({ 
+          logoutParams: {
+            returnTo: window.location.origin
           }
-        >
+        })}>
           Log Out
         </button>
       </div>
