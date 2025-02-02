@@ -74,14 +74,7 @@ export default function PersonalInfo() {
   });
 
     // State declaration for full address
-    const [address, setAddress] = useState({
-      lineOne: "",
-      aptsuite: "",
-      city: "",
-      state: "",
-      country: "",
-      postalCode: "",
-    });
+    const [address, setAddress] = useState("");
 
   // State declaration for email address
   const [emailAddress, setEmailAddress] = useState("");
@@ -118,7 +111,9 @@ export default function PersonalInfo() {
       {!editStates.legalName ? (
         // View mode - show LegalName component
         <LegalName
-          toggleEditMenu={() => toggleEditMenu("legalName")} // Pass toggle function
+        firstName={firstName}
+        lastName={lastName}
+        toggleEditMenu={() => toggleEditMenu("legalName")} // Pass toggle function
         />
       ) : (
         // Edit mode - show LegalNameEdit component
@@ -126,9 +121,9 @@ export default function PersonalInfo() {
           toggleEditMenu={() => toggleEditMenu("legalName")} // Pass toggle function
           initialFirstName={firstName} // Pass current legal name as starting value
           initialLastName={lastName}
-          onSave={() => {
-            setFirstName();
-            setLastName();
+          onSave={(x , y) => {
+            setFirstName(x);
+            setLastName(y);
           }} // Pass function to update first and last name
         />
       )}
@@ -171,6 +166,7 @@ export default function PersonalInfo() {
         // View mode - show PhoneNumber component
         <EmailAddress
           toggleEditMenu={() => toggleEditMenu("emailAddress")} // Pass toggle function
+          emailAddress={emailAddress}
           />
         ) : (
           // Edit mode - show Email Address component
@@ -187,13 +183,13 @@ export default function PersonalInfo() {
         <Address
         toggleEditMenu={() => toggleEditMenu
           ("address")}
+        address={address}
         />
       ) : (
         <AddressEdit
           toggleEditMenu={() => toggleEditMenu ("address")} 
           onSave={setAddress}
           initialAddress={address}
-          
           /> )}
 
 
@@ -203,6 +199,7 @@ export default function PersonalInfo() {
         // View mode - show PhoneNumber component
         <EmergencyContact
           toggleEditMenu={() => toggleEditMenu("emergencyContact")} // Pass toggle function
+          emergencyContact={emergencyContact}
         />
       ) : (
         // Edit mode - show Email Address component

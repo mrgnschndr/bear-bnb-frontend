@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState , useEffect } from "react";
 import { useLoggedInUser } from "../hooks/useLoggedInUser";
 
 /**
@@ -12,14 +12,24 @@ export default function PhoneNumber({ phoneNumber, toggleEditMenu }) {
 
   // Call the custom hook and destructure the values
   const { loggedInUser } = useLoggedInUser();
+  const [phoneNum, setPhoneNum ] = useState(null);
+
+
+  useEffect(() => {
+    if (loggedInUser && loggedInUser.user_phone) {
+      setPhoneNum(loggedInUser.user_phone);
+    }
+  }, [loggedInUser]);
 
   return (
     <div className="info-section">
       <div>
         <h3>Phone Number</h3>
         <p>
-          {/* Display phone number state first, fallback to loggedInUser */}
-          {phoneNumber || loggedInUser?.user_phone || "Not Provided"}
+          {/* Conditionally render the user's full name or a fallback */}
+          {phoneNumber 
+          ? `${phoneNumber}`
+          : `${phoneNum}`}
         </p>
       </div>
       <button onClick={toggleEditMenu}>Edit</button>

@@ -13,7 +13,7 @@ export default function AddressEdit({
     const { loggedInUser } = useLoggedInUser();
 
     // Initialize state and modifier function for full user address
-    const [address, setAddress] = useState(initialAddress);
+    const [address, setAddress] = useState(initialAddress || '');
 
     //Initialize state for error message
     const [error, setError] = useState("");
@@ -45,12 +45,12 @@ export default function AddressEdit({
             });
 
             onSave(
-                address.lineOne &&
-                address.aptsuite &&
-                address.city &&
-                address.state &&
-                address.country &&
-                address.postalCode
+                `${address.lineOne}
+                ${address.aptsuite}
+                ${address.city} ,
+                ${address.state}
+                ${address.country}
+                ${address.postalCode}`
             );
 
             toggleEditMenu();

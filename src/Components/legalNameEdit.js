@@ -36,7 +36,7 @@ export default function LegalNameEdit({
                 user_last_name: lastName
             });
 
-            onSave(firstName && lastName);
+            onSave(firstName , lastName);
 
             toggleEditMenu();
             console.log(res);
