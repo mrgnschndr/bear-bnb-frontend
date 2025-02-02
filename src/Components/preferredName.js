@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useLoggedInUser } from "../hooks/useLoggedInUser";
 
-export default function PreferredName({ toggleEditMenu }) {
+export default function PreferredName({ toggleEditMenu,
+nickName
+ }) {
   // Call the custom hook and destructure the values
   const { loggedInUser } = useLoggedInUser();
+  const [ prefName, setPrefName ] = useState(null);
+
+  useEffect(() => {
+    if (loggedInUser && loggedInUser.preferredName) {
+      setPrefName(loggedInUser.preferredName);
+    }
+  }, [loggedInUser]);
 
   return (
     <div className="info-section">
@@ -11,10 +20,10 @@ export default function PreferredName({ toggleEditMenu }) {
         <h3>Preferred name</h3>
         <p>
           {/* Conditionally render the user's full name or a fallback */}
-          {loggedInUser
+          {nickName
             // TODO: We need to think about adding nickname to the DB
-            ? `${loggedInUser.user_nickname}`
-            : "Not Provided"}
+            ? `${nickName}`
+            : ''}
         </p>
       </div>
       <button onClick={toggleEditMenu}>Edit</button>

@@ -134,7 +134,8 @@ export default function PersonalInfo() {
 
       // View mode - show LegalName component
       <PreferredName 
-        toggleEditMenu={() => toggleEditMenu("preferredName")} //Pass toggle function
+        toggleEditMenu={() => toggleEditMenu("preferredName")}
+        nickName={nickName} //Pass toggle function
       />
       ) : (
         // Edit mode - show LegalNameEdit component
